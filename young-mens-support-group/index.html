@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Young Men’s Support Group</title>
+    </head>
+    <style>
+        :root {
+            --bg: #161618;
+            --fg: #fffff0;
+            --accent-color: #c00000;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: Helvetica, Arial, Roboto, sans-serif;
+            max-width: 60rem;
+            margin:  2rem auto 2rem auto;
+        }
+        h1 {
+            text-transform: uppercase;
+            font-size: 5rem;
+            font-weight: bold;
+            margin-bottom: 0;
+        }
+        p.subtitle {
+            font-size: 2rem;
+            margin-top: 0;
+            padding-bottom: 1.875rem;
+            margin-bottom: 2rem;
+            border-bottom: 0.125rem solid var(--accent-color);
+        }
+        h2 {
+            text-transform: uppercase;
+            font-weight: bold;
+            font-size: 2rem;
+            margin: 0;
+        }
+        h2 .certs {
+            text-transform: none;
+        }
+        img.hero {
+            width: 100%;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+        .bios {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            margin-top: 1.875rem;
+            border-top: 0.125rem solid var(--accent-color);
+            padding-top: 2rem;
+        }
+        .bios .bio {
+            flex: 1;
+        }
+        .bios .bio:not(:last-child) {
+            border-right: 0.125rem dotted var(--fg);
+        }
+    </style>
+    <body>
+        <h1>Young Men’s Support Group</h1>
+        <p class="subtitle">A mental health support group for teens</p>
+        <img class="hero" src="hero-image.jpg" alt="Smiling guys">
+        <h2>About the program</h2>
+        <p class="program-description">Program description goes here.</p>
+        <div class="meeting-info">
+            <p>Meeting schedule and location.</p>
+            <p>QR code.</p>
+        </div>
+        <div class="bios">
+            <div class="bio">
+                <h2>Glen Leonard</h2>
+                <p>Bio goes here.</p>
+            </div>
+            <div class="bio">
+                <h2>Chris Reigeluth, <span class="certs">Ph.D</span></h2>
+                <p>Bio goes here.</p>
+            </div>
+        </div>
+    </body>
+</html>
