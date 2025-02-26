@@ -170,27 +170,6 @@ class SoD {
         }
         addFullNames();
 
-        function insertQuestions() {
-            const insertionPoints = document.querySelectorAll(".question-content[content-type='questions']");
-            for (const insertionPoint of insertionPoints) {
-                const interviewNumber = insertionPoint.getAttribute("interview");
-                const interviewIndex = interviewNumber - 1;
-                const interview = SoD.interviews[interviewIndex];
-                if (interview) {
-                    const content = SoD.interviews[interviewIndex].questionsAsHTML();
-                    insertionPoint.replaceChildren(content);
-                } else {
-                    const errorMessage = SoD.message({
-                        heading: "Something is not right.",
-                        body: "No interview data is associated with this link."
-                    });
-                    document.body.appendChild(errorMessage);
-                    errorMessage.showModal();
-                }
-            }
-        }
-        insertQuestions();
-
         function populateTOC() {
             const tocLabels = document.querySelectorAll("#Toc ul li a .TocText");
             const tocListItems = document.querySelectorAll("#Toc ul > li");
@@ -205,6 +184,25 @@ class SoD {
             }
         }
         populateTOC();
+
+        function insertQuestions() {
+            const insertionPoints = document.querySelectorAll(".question-content[content-type='questions']");
+            const interview = SoD.getInterview();
+            for (const insertionPoint of insertionPoints) {
+                if (interview) {
+                    const content = interview.questionsAsHTML();
+                    insertionPoint.replaceChildren(content);
+                } else {
+                    const errorMessage = SoD.message({
+                        heading: "Something is not right.",
+                        body: "No interview data is associated with this link."
+                    });
+                    document.body.appendChild(errorMessage);
+                    errorMessage.showModal();
+                }
+            }
+        }
+        insertQuestions();
     }
 
     static async init() {
