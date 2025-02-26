@@ -90,7 +90,7 @@ class SoD {
             if (listItem.classList.contains("Current")) {
                 const interviewIndex = listItem.getAttribute("interview-index");
                 if (interviewIndex) {
-                    return SoD.interviews[interviewIdex];
+                    return SoD.interviews[interviewIndex];
                 } else {
                     return false;
                 }
