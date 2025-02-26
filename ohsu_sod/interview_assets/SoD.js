@@ -86,7 +86,17 @@ class SoD {
 
     static getInterviewNumber() {
         const tocList = document.querySelector("#Toc > ul");
-        console.log(tocList.children);
+        for (const listItem of tocList.children) {
+            if (listItem.classList.contains("Current")) {
+                const interviewNumber = listItem.getAttribute("interview-number");
+                if (interviewNumber) {
+                    return interviewNumber;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
     }
 
     static populateCandidateName() {
@@ -183,10 +193,13 @@ class SoD {
 
         function populateTOC() {
             const tocLabels = document.querySelectorAll("#Toc ul li a .TocText");
+            const tocListItems = document.querySelectorAll("#Toc ul > li");
             for (const interview of SoD.interviews) {
                 const index = SoD.interviews.indexOf(interview);
+                const interviewNumber = index + 1;
+                tocListItems[index].setAttribute("aadsas-id", interview.applicant.id);
+                tocListItems[index].setAttribute("interview-number", interviewNumber);
                 tocLabels[index].innerText = interview.applicant.fullName;
-                tocLabels[index].setAttribute("aadsas-id", interview.applicant.id);
             }
         }
         populateTOC();
