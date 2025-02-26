@@ -86,7 +86,7 @@ class SoD {
 
     static getInterviewNumber() {
         const tocList = document.querySelector("#Toc > ul");
-        console.log(tocList.entries());
+        console.log(tocList.children);
     }
 
     static populateCandidateName() {
