@@ -230,7 +230,6 @@ class SoD {
         if (SoD.interviews) {
             SoD.#onInterviewDataReady();
         }
-        SoD.getInterviewNumber();
     };
 }
 SoD.init();
