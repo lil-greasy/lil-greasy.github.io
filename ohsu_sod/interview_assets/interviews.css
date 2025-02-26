@@ -1,0 +1,228 @@
+/*  This needs to be pasted into “Custom CSS” under “Look and feel / Style”. Sadly,
+    it cannot be referenced from a Qualtrics library because Qualtrics serves CSS
+    files with the wrong mimetype. */
+
+@font-face {
+    font-family: 'Lato';
+    src: url('https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_NxxkGWicZRRA88b') format('woff2');
+    font-style: normal;
+    font-weight: 900;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_7Tag3PGv4iRPYQb') format('woff2');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_0tfm7ceRQj2jAc3') format('woff2');
+    font-style: italic;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_FDufkZEsoheAECT') format('woff2');
+    font-style: italic;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+@font-face {
+    font-family: 'Lato';
+    src: url('https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_S3hB6uSNdqViHyi') format('woff2');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+:root {
+    --horizon: #FFD334;
+    --marquam: #78A1D3;
+    --terwilliger: #72B840;
+    --charcoal: #53595F;
+    --magenta: #E23694;
+    --hot-red: #E11837;
+    --orange: #F57E25;
+    --warm-red: #EF383A;
+    --light-green: #82C341;
+    --green: #008652;
+    --light-blue: #3EA0D9;
+    --blue: #0060AC;
+
+    --wide-round: 1rem;
+    --med-round: 0.5rem;
+    --narrow-round: 0.25rem;
+
+    --big-shadow: 0rem 1rem 1.5rem rgba(0, 0, 0, 0.5);
+}
+
+.Skin :is(.SkinInner, textarea),
+dialog {
+    font-family: Lato, Helvetica, Aptos, sans-serif;
+}
+.Skin #HeaderContainer {
+    display: none;
+}
+.Skin .QuestionOuter {
+    padding: 0;
+}
+.Skin .MC .TextEntryBox,
+.Skin .TE .ESTB .InputText,
+.Skin .TE .FORM .InputText,
+.Skin .TE .FollowUp .InputText,
+.Skin .TE .ML .InputText,
+.Skin .TE .PW .InputText,
+.Skin .TE .SL .InputText,
+.Skin .TE textarea,
+.Skin input.TextEntryBox,
+.Skin input[type=password],
+.Skin input[type=search],
+.Skin input[type=text],
+.Skin textarea {
+    border-radius: var(--narrow-round);
+}
+
+dialog {
+    border-radius: var(--med-round);
+    box-shadow: var(--big-shadow);
+    border: 1px solid var(--marquam);
+    & .close-button, .close-button:after {
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        border: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: var(--narrow-round);
+        background-color: var(--hot-red);
+        color: #ffffff;
+        cursor: pointer;
+    }
+    & .close-button {
+        right: 0.25rem;
+        top: 0.25rem;
+        &:after {
+            right: 0;
+            top: 0;
+            content: "×";
+        }
+    }
+    & h5 {
+        border-bottom: 1px solid var(--charcoal);
+        padding-bottom: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.ActivePage .Skin #TocSidebarContainer {
+    width: 100%;
+    position: fixed;
+    border-radius: 0;
+    & #TocSidebarContent {
+        visibility: visible;
+        transition: none;
+        padding: 0.5rem 1rem 0.25rem;
+        width: 100%;
+        margin-left: 0;
+        background-color: color-mix(in srgb, var(--charcoal) 25%, #ffffff 75%);
+        & #Toc {
+            & strong {
+                padding: 0;
+            }
+            & ul {
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+                & li {
+                    flex: 1;
+                    max-width: 18rem;
+                    border-radius: 0.25rem;
+                    overflow: hidden;
+                    border: 1px solid #d0d0e0;
+                    & a {
+                        padding: 0.25rem 0.5rem;
+                    }
+                    & span.TocText {
+                        margin-left: 0;
+                    }
+                    &.Current span.TocText {
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
+    & #TOCToggle {
+        display: none !important;
+    }
+}
+
+.TocMargin #SkinContent {
+    padding-top: 0;
+}
+
+div[content-type="questions"] {
+    height: 20rem;
+    overflow-y: hidden;
+    border: 1px solid var(--marquam);
+    border-radius: var(--narrow-round);
+    background-color: color-mix(in srgb, var(--marquam) 15%, #ffffff 85%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & div.question-list-scroll-wrapper {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        & ol.question-list {
+            margin: 0;
+            padding: 1em;
+            padding-left: 2em;
+            font-size: 75%;
+            line-height: 1.2em;
+            max-width: 36em;
+            &:before {
+                content: "Questions:";
+                display: block;
+                font-weight: bold;
+                text-transform: uppercase;
+                margin-bottom: 1em;
+            }
+            & .question-set:not(:last-of-type) {
+                border-bottom: 1px dotted var(--marquam);
+                padding-bottom: 1em;
+                margin-bottom: 1em;
+            }
+            & ::marker {
+                color: var(--marquam);
+                font-weight: bold;
+            }
+            & ul.probing-questions {
+                margin-top: 0.5em;
+                padding: 0;
+                list-style-type: square;
+                &:before {
+                    content: "Probing questions:";
+                    font-weight: bold;
+                    color: var(--marquam);
+                }
+            }
+        }
+    }
+}
+
+div[content-type="notes-instructions"] {
+    font-size: 75%;
+    font-style: italic;
+    line-height: 1.2em;
+}
+.Skin #SkinContent .TE .ML textarea {
+    height: 20rem;
+    background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
+    font-size: 85%;
+}

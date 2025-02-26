@@ -83,6 +83,12 @@ class SoD {
         }
         return interviews;
     }
+
+    static getInterviewNumber() {
+        const tocList = document.querySelector("#Toc > ul");
+        console.log(tockList.entries());
+    }
+
     static populateCandidateName() {
         const target = document.querySelector("#applicant-name");
         const preamble = document.querySelector("#Header h2 .preamble");
@@ -209,6 +215,7 @@ class SoD {
         if (SoD.interviews) {
             SoD.#onInterviewDataReady();
         }
+        SoD.getInterviewNumber();
     };
 }
 SoD.init();
