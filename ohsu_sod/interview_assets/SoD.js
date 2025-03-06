@@ -209,7 +209,7 @@ class SoD {
             const replacements = [
                 {
                     className: "applicant-first-name",
-                    content: SoD.getInterview.applicant.firstName
+                    content: SoD.getInterview().applicant.firstName
                 }
             ];
 
