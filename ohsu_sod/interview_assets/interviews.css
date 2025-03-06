@@ -59,31 +59,38 @@
     --big-shadow: 0rem 1rem 1.5rem rgba(0, 0, 0, 0.5);
 }
 
-.Skin :is(.SkinInner, textarea),
-dialog {
-    font-family: Lato, Helvetica, Aptos, sans-serif;
+.Skin {
+    & :is(.SkinInner, textarea),
+    & dialog {
+        font-family: Lato, Helvetica, Aptos, sans-serif;
+    }
+    & #HeaderContainer {
+        display: none;
+    }
+    & .QuestionOuter {
+        padding: 0;
+    }
+    & .MC .TextEntryBox,
+    & .TE .ESTB .InputText,
+    & .TE .FORM .InputText,
+    & .TE .FollowUp .InputText,
+    & .TE .ML .InputText,
+    & .TE .PW .InputText,
+    & .TE .SL .InputText,
+    & .TE textarea,
+    & input.TextEntryBox,
+    & input[type=password],
+    & input[type=search],
+    & input[type=text],
+    & textarea {
+        border-radius: var(--narrow-round);
+    }
+    & label.MultipleAnswer,
+    & label.SingleAnswer {
+        background-color: transparent;
+    }
 }
-.Skin #HeaderContainer {
-    display: none;
-}
-.Skin .QuestionOuter {
-    padding: 0;
-}
-.Skin .MC .TextEntryBox,
-.Skin .TE .ESTB .InputText,
-.Skin .TE .FORM .InputText,
-.Skin .TE .FollowUp .InputText,
-.Skin .TE .ML .InputText,
-.Skin .TE .PW .InputText,
-.Skin .TE .SL .InputText,
-.Skin .TE textarea,
-.Skin input.TextEntryBox,
-.Skin input[type=password],
-.Skin input[type=search],
-.Skin input[type=text],
-.Skin textarea {
-    border-radius: var(--narrow-round);
-}
+
 
 dialog {
     border-radius: var(--med-round);
@@ -183,7 +190,6 @@ div[content-type="questions"] {
             margin: 0;
             padding: 1em;
             padding-left: 2em;
-            font-size: 75%;
             line-height: 1.2em;
             max-width: 36em;
             &:before {
@@ -217,7 +223,6 @@ div[content-type="questions"] {
 }
 
 div[content-type="notes-instructions"] {
-    font-size: 75%;
     font-style: italic;
     line-height: 1.2em;
 }
