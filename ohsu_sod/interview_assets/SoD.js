@@ -272,7 +272,6 @@ class SoD {
         }
     };
 }
-SoD.init();
 
 class RubricKey {
     constructor(quality) {
@@ -326,4 +325,5 @@ class RubricKey {
 }
 
 Qualtrics.SurveyEngine.addOnReady(function() {
+    SoD.init();
 })
