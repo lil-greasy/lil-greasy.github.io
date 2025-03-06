@@ -139,12 +139,6 @@ class SoD {
         const linkElement = document.querySelector("head link[rel=\"icon\"]");
         linkElement.href = url;
     };
-    static commonRoutine() {
-        this.populateCandidateName();
-        this.populateCandidateMenu();
-        this.hideQualtricsAd();
-        this.populateInterviewerName();
-    };
 
     static async #fetchJSON(url, description) {
         try {
@@ -170,7 +164,7 @@ class SoD {
 
         let traverser = skipperMarker;
         console.log(traverser);
-        while (traverser.tagName !== "fieldset") {
+        if (traverser.tagName !== "fieldset") {
             traverser = traverser.parentElement;
         }
 
