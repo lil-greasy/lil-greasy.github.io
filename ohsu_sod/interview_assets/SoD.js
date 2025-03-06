@@ -169,6 +169,7 @@ class SoD {
         console.log(skipperMarker);
 
         let traverser = skipperMarker;
+        console.log(traverser);
         while (traverser.tagName !== "fieldset") {
             traverser = traverser.parentElement;
         }
