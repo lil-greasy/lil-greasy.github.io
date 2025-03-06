@@ -162,7 +162,7 @@ class SoD {
         const skipperMarker = document.querySelector(".eval-skipper");
 
         let traverser = skipperMarker;
-        while (traverser.tagName !== "fieldset") {
+        while (traverser.tagName.toLocaleLowerCase !== "fieldset") {
             console.log(traverser.tagName);
             traverser = traverser.parentElement;
         }
