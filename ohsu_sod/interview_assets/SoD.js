@@ -161,13 +161,14 @@ class SoD {
     static #activateEvalSkipper() {
         const skipperMarker = document.querySelector(".eval-skipper");
 
-        let traverser = skipperMarker;
-        while (traverser.tagName.toLocaleLowerCase() !== "fieldset") {
-            console.log(traverser.tagName);
-            traverser = traverser.parentElement;
+        let domClimber = skipperMarker;
+        while (!domClimber.classList.contains("QuestionOuter")) {
+            domClimber = domClimber.parentElement;
         }
+        const questionRoot = domClimber;
+        questionRoot.classList.add(".eval-skipper");
 
-        const checkbox = traverser.querySelector("input[type=\"checkbox\"]");
+        const checkbox = domClimber.querySelector("input[type=\"checkbox\"]");
         checkbox.addEventListener("change", function() {
             if (checkbox.checked) {
                 document.body.classList.add("skip-eval");
