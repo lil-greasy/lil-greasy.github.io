@@ -232,3 +232,7 @@ div.instructional-notes {
     background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
     font-size: 85%;
 }
+
+body.skip-eval .QuestionOuter:not(.eval-skipper) {
+    display: none;
+}
