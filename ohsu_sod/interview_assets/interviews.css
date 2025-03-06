@@ -233,6 +233,6 @@ div.instructional-notes {
     font-size: 85%;
 }
 
-body.skip-eval .QuestionOuter:not(.eval-skipper) {
+body.skip-eval #Questions .QuestionOuter:not(.eval-skipper) {
     display: none;
 }
