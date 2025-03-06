@@ -88,6 +88,7 @@
     & label.MultipleAnswer,
     & label.SingleAnswer {
         background-color: transparent;
+        border-radius: var(--narrow-round);
     }
 }
 
@@ -222,7 +223,7 @@ div[content-type="questions"] {
     }
 }
 
-div[content-type="notes-instructions"] {
+div[content-type="instructional-notes"] {
     font-style: italic;
     line-height: 1.2em;
 }

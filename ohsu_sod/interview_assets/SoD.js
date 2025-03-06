@@ -204,6 +204,23 @@ class SoD {
             }
         }
         insertQuestions();
+
+        function insertNames() {
+            const replacements = [
+                {
+                    className: "applicant-first-name",
+                    content: SoD.getInterview.applicant.firstName
+                }
+            ];
+
+            for (const replacement of replacements) {
+                const insertionPoints = document.querySelectorAll(`.insertion-point.${replacement.className}`);
+                for (const insertionPoint of insertionPoints) {
+                    insertionPoint.innerText = replacement.content;
+                }
+            }
+        }
+        insertNames();
     }
 
     static async init() {
