@@ -160,14 +160,10 @@ class SoD {
 
     static #activateEvalSkipper() {
         const skipperMarker = document.querySelector(".eval-skipper");
-        console.log(skipperMarker);
 
         let traverser = skipperMarker;
-        console.log(traverser);
-        let i = 0;
-        while (traverser.tagName != "fieldset") {
-            console.log(i);
-            i++;
+        while (traverser.tagName !== "fieldset") {
+            console.log(traverser.tagName);
             traverser = traverser.parentElement;
         }
 
