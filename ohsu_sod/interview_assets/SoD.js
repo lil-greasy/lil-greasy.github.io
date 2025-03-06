@@ -4,6 +4,7 @@ class SoD {
     static #evalRubricURL = "https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_hdEKnZipEZAZyXR";
     static #questionBankURL = "https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_U3aLMo6iTNShhRr";
     static #maximumInterviewsPerDay = 10;
+    static interviews = [];
 
     static message(conf) {
         const messageBox = document.createElement("dialog");
@@ -208,6 +209,7 @@ class SoD {
     static async init() {
         SoD.hideQualtricsAd();
         SoD.replaceFavIcon();
+
         try {
             SoD.evalRubric = await SoD.#fetchJSON(SoD.#evalRubricURL, "evaluation rubric");
         } catch (error) {
@@ -216,6 +218,7 @@ class SoD {
             rubricError.show();
             throw error;
         }
+
         try {
             SoD.questionBank = await SoD.#fetchJSON(SoD.#questionBankURL, "question bank");
         } catch (error) {
@@ -224,8 +227,9 @@ class SoD {
             questionBankError.show();
             throw error;
         }
+
         SoD.interviews = SoD.loadInterviews();
-        if (SoD.interviews) {
+        if (SoD.interviews.length > 0) {
             SoD.#onInterviewDataReady();
         }
     };
