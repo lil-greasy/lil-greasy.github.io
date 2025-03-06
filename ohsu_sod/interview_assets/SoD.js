@@ -166,7 +166,7 @@ class SoD {
             domClimber = domClimber.parentElement;
         }
         const questionRoot = domClimber;
-        questionRoot.classList.add(".eval-skipper");
+        questionRoot.classList.add("eval-skipper");
 
         const checkbox = domClimber.querySelector("input[type=\"checkbox\"]");
         checkbox.addEventListener("change", function() {
