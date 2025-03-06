@@ -223,7 +223,7 @@ div[content-type="questions"] {
     }
 }
 
-div[content-type="instructional-notes"] {
+div.instructional-notes {
     font-style: italic;
     line-height: 1.2em;
 }
