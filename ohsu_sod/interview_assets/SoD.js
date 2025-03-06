@@ -5,6 +5,7 @@ class SoD {
     static #questionBankURL = "https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_U3aLMo6iTNShhRr";
     static #maximumInterviewsPerDay = 10;
     static interviews = [];
+    static questionBank = {};
 
     static message(conf) {
         const messageBox = document.createElement("dialog");
@@ -163,6 +164,24 @@ class SoD {
         }
     };
 
+    static #activateEvalSkipper() {
+        const skipperMarker = document.querySelector(".eval-skipper");
+
+        let traverser = skipperMarker;
+        while (traverser.tagName !== "fieldset") {
+            traverser = traverser.parentElement;
+        }
+
+        const checkbox = traverser.querySelector("input[type=\"checkbox\"]");
+        checkbox.addEventListener("change", function() {
+            if (checkbox.checked) {
+                document.body.classList.add("skip-eval");
+            } else {
+                document.body.classList.remove("skip-eval");
+            }
+        });
+    }
+
     static #onInterviewDataReady() {
         function addFullNames() {
             for (const interview of SoD.interviews) {
@@ -226,6 +245,8 @@ class SoD {
     static async init() {
         SoD.hideQualtricsAd();
         SoD.replaceFavIcon();
+
+        SoD.#activateEvalSkipper();
 
         try {
             SoD.evalRubric = await SoD.#fetchJSON(SoD.#evalRubricURL, "evaluation rubric");
