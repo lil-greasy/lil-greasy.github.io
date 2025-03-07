@@ -175,7 +175,26 @@ class SoD {
     }
 
     static activateNotepadBackup() {
+        const notepadMarker = document.querySelector(".notepad-marker");
 
+        if (notepadMarker) {
+            let domClimber = notepadMarker;
+            while (!domClimber.classList.contains("QuestionOuter")) {
+                domClimber = domClimber.parentElement;
+            }
+            const questionRoot = domClimber;
+            questionRoot.classList.add("notepad");
+
+            const textarea = questionRoot.querySelector("textarea");
+
+            function saveToEmbeddedData() {
+                Qualtrics.SurveyEngine.setJSEmbeddedData("notes_backup", textarea.value);
+                console.log("💾");
+            }
+
+            const interval = 30 * 1000;
+            setInterval(saveToEmbeddedData, interval);
+        }
     }
 
     static #onInterviewDataReady() {
@@ -243,6 +262,7 @@ class SoD {
         SoD.replaceFavIcon();
 
         SoD.activateEvalSkipper();
+        SoD.activateNotepadBackup();
 
         try {
             SoD.evalRubric = await SoD.#fetchJSON(SoD.#evalRubricURL, "evaluation rubric");
