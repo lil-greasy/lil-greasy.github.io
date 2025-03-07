@@ -167,8 +167,9 @@ class SoD {
                     }
                 }
             }
-            checkbox.addEventListener("change", updateDisabledState);
+            checkbox.addEventListener("input", updateDisabledState);
 
+            checkbox.checked = false;
             updateDisabledState();
         }
     }
