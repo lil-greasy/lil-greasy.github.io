@@ -84,6 +84,8 @@ class SoD {
                 question.content = SoD.questionBank[category][question.number];
             }
 
+            interview.number = interviews.indexOf(interview) + 1;
+            interview.applicant.fullName = `${interview.applicant.firstName} ${insterview.applicant.lastName}`;
             interview.questionsAsHTML = function() {
                 const scrollWrapper = document.createElement("div");
                 scrollWrapper.classList.add("question-list-scroll-wrapper");
@@ -188,7 +190,7 @@ class SoD {
             const textarea = questionRoot.querySelector("textarea");
 
             function saveToEmbeddedData() {
-                Qualtrics.SurveyEngine.setJSEmbeddedData("notes_backup", textarea.value);
+                Qualtrics.SurveyEngine.setJSEmbeddedData(`notepad_backup_${SoD.getCurrentInterview.number}`, textarea.value);
                 console.log("💾");
             }
 
@@ -198,13 +200,6 @@ class SoD {
     }
 
     static #onInterviewDataReady() {
-        function addFullNames() {
-            for (const interview of SoD.interviews) {
-                interview.applicant.fullName = interview.applicant.firstName + " " + interview.applicant.lastName;
-            }
-        }
-        addFullNames();
-
         function populateTOC() {
             const tocLabels = document.querySelectorAll("#Toc ul li a .TocText");
             const tocListItems = document.querySelectorAll("#Toc ul > li");
