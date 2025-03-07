@@ -128,24 +128,6 @@ class SoD {
         linkElement.href = url;
     };
 
-    static async #fetchJSON(url, description) {
-        try {
-            if (description) {
-                description = " for " + description;
-            } else {
-                description = " at " + url;
-            }
-            const response = await fetch(url);
-            if (!response.ok) {
-                throw new Error("Failed to fetch JSON file" + description + ". Status from server: " + response.status);
-            }
-            const json = await response.json();
-            return json;
-        } catch (error) {
-            console.error(error.message);
-        }
-    };
-
     static activateEvalSkipper() {
         const skipperMarker = document.querySelector(".eval-skipper");
 
@@ -166,6 +148,10 @@ class SoD {
                 }
             });
         }
+    }
+
+    static activateNotepadBackup() {
+
     }
 
     static #onInterviewDataReady() {
