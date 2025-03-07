@@ -140,11 +140,31 @@ class SoD {
             questionRoot.classList.add("eval-skipper");
     
             const checkbox = domClimber.querySelector("input[type=\"checkbox\"]");
+
+            function getOtherQuestionInputs() {
+                const otherQuestionContainers = document.querySelectorAll(".QuestionOuter:not(.eval-skipper)");
+                let inputs = [];
+                for (const container of otherQuestionContainers) {
+                    container.inputs = container.querySelectorAll("input");
+                    for (const input of container.inputs) {
+                        inputs.push(input);
+                    }
+                }
+                return inputs;
+            }
             checkbox.addEventListener("change", function() {
                 if (checkbox.checked) {
                     document.body.classList.add("skip-eval");
+                    const otherInputs = getOtherQuestionInputs();
+                    for (const input of otherInputs) {
+                        input.disabled = true;
+                    }
                 } else {
                     document.body.classList.remove("skip-eval");
+                    const otherInputs = getOtherQuestionInputs();
+                    for (const input of otherInputs) {
+                        input.disabled = false;
+                    }
                 }
             });
         }
