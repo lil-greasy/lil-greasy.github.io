@@ -241,7 +241,7 @@ class SoD {
         SoD.hideQualtricsAd();
         SoD.replaceFavIcon();
 
-        // SoD.activateEvalSkipper();
+        SoD.activateEvalSkipper();
 
         try {
             SoD.evalRubric = await SoD.#fetchJSON(SoD.#evalRubricURL, "evaluation rubric");
