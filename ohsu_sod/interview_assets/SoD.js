@@ -7,6 +7,24 @@ class SoD {
     static interviews = [];
     static questionBank = {};
 
+    static async #fetchJSON(url, description) {
+        try {
+            if (description) {
+                description = " for " + description;
+            } else {
+                description = " at " + url;
+            }
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error("Failed to fetch JSON file" + description + ". Status from server: " + response.status);
+            }
+            const json = await response.json();
+            return json;
+        } catch (error) {
+            console.error(error.message);
+        }
+    };
+
     static message(conf) {
         const messageBox = document.createElement("dialog");
         messageBox.classList.add("message");
@@ -35,6 +53,21 @@ class SoD {
 
         return messageBox;
     };
+
+    static getCurrentInterview() {
+        const tocList = document.querySelector("#Toc > ul");
+        for (const listItem of tocList.children) {
+            if (listItem.classList.contains("Current")) {
+                const interviewIndex = listItem.getAttribute("interview-index");
+                if (interviewIndex) {
+                    return SoD.interviews[interviewIndex];
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 
     static loadInterviews() {
         const interviews = [];
@@ -86,51 +119,6 @@ class SoD {
         return interviews;
     }
 
-    static getInterview() {
-        const tocList = document.querySelector("#Toc > ul");
-        for (const listItem of tocList.children) {
-            if (listItem.classList.contains("Current")) {
-                const interviewIndex = listItem.getAttribute("interview-index");
-                if (interviewIndex) {
-                    return SoD.interviews[interviewIndex];
-                } else {
-                    return false;
-                }
-            }
-        }
-        return false;
-    }
-
-    static populateCandidateName() {
-        const target = document.querySelector("#applicant-name");
-        const preamble = document.querySelector("#Header h2 .preamble");
-        const blockNumber = this.getBlockNumber();
-        const fieldName = "Candidate" + blockNumber;
-        const candidateName = Qualtrics.SurveyEngine.getJSEmbeddedData(fieldName);
-        preamble.innerText = "Currently evaluating ";
-        if (candidateName) {
-            target.innerText = candidateName;
-        } else {
-            target.innerText = "a candidate";
-        }
-    };
-    static populateInterviewerName() {
-        const target = document.querySelector("#Toc strong");
-        const first = Qualtrics.SurveyEngine.getJSEmbeddedData("RecipientFirstName");
-        const last = Qualtrics.SurveyEngine.getJSEmbeddedData("RecipientLastName");
-        if (first && last) {
-            target.innerText = (first + " " + last);
-        }
-    };
-    static populateCandidateMenu() {
-        const listItems = document.querySelectorAll("#Toc .TocText");
-        for (const i = 0; i < listItems.length; i++) {
-            const thisOnesName = Qualtrics.SurveyEngine.getJSEmbeddedData("Candidate" + (i + 1));
-            if (thisOnesName) {
-                listItems[i].innerText = thisOnesName;
-            }
-        }
-    };
     static hideQualtricsAd() {
         const ad = document.getElementById("Plug");
         ad.remove();
@@ -158,24 +146,26 @@ class SoD {
         }
     };
 
-    static #activateEvalSkipper() {
+    static activateEvalSkipper() {
         const skipperMarker = document.querySelector(".eval-skipper");
 
-        let domClimber = skipperMarker;
-        while (!domClimber.classList.contains("QuestionOuter")) {
-            domClimber = domClimber.parentElement;
-        }
-        const questionRoot = domClimber;
-        questionRoot.classList.add("eval-skipper");
-
-        const checkbox = domClimber.querySelector("input[type=\"checkbox\"]");
-        checkbox.addEventListener("change", function() {
-            if (checkbox.checked) {
-                document.body.classList.add("skip-eval");
-            } else {
-                document.body.classList.remove("skip-eval");
+        if (skipperMarker) {
+            let domClimber = skipperMarker;
+            while (!domClimber.classList.contains("QuestionOuter")) {
+                domClimber = domClimber.parentElement;
             }
-        });
+            const questionRoot = domClimber;
+            questionRoot.classList.add("eval-skipper");
+    
+            const checkbox = domClimber.querySelector("input[type=\"checkbox\"]");
+            checkbox.addEventListener("change", function() {
+                if (checkbox.checked) {
+                    document.body.classList.add("skip-eval");
+                } else {
+                    document.body.classList.remove("skip-eval");
+                }
+            });
+        }
     }
 
     static #onInterviewDataReady() {
@@ -203,7 +193,7 @@ class SoD {
 
         function insertQuestions() {
             const insertionPoints = document.querySelectorAll(".question-content[content-type='questions']");
-            const interview = SoD.getInterview();
+            const interview = SoD.getCurrentInterview();
             for (const insertionPoint of insertionPoints) {
                 if (interview) {
                     const content = interview.questionsAsHTML();
@@ -224,7 +214,7 @@ class SoD {
             const replacements = [
                 {
                     className: "applicant-first-name",
-                    content: SoD.getInterview().applicant.firstName
+                    content: SoD.getCurrentInterview().applicant.firstName
                 }
             ];
 
@@ -242,7 +232,7 @@ class SoD {
         SoD.hideQualtricsAd();
         SoD.replaceFavIcon();
 
-        SoD.#activateEvalSkipper();
+        SoD.activateEvalSkipper();
 
         try {
             SoD.evalRubric = await SoD.#fetchJSON(SoD.#evalRubricURL, "evaluation rubric");
