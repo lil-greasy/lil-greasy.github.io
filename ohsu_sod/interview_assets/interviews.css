@@ -234,5 +234,5 @@ div.instructional-notes {
 }
 
 body.skip-eval #Questions .QuestionOuter:not(.eval-skipper) {
-    display: none;
+    opacity: 0.5;
 }
