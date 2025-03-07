@@ -145,14 +145,14 @@ class SoD {
                 const otherQuestionContainers = document.querySelectorAll(".QuestionOuter:not(.eval-skipper)");
                 let inputs = [];
                 for (const container of otherQuestionContainers) {
-                    container.inputs = container.querySelectorAll("input");
+                    container.inputs = container.querySelectorAll(":is(input, textarea)");
                     for (const input of container.inputs) {
                         inputs.push(input);
                     }
                 }
                 return inputs;
             }
-            checkbox.addEventListener("change", function() {
+            function updateDisabledState() {
                 if (checkbox.checked) {
                     document.body.classList.add("skip-eval");
                     const otherInputs = getOtherQuestionInputs();
@@ -166,7 +166,10 @@ class SoD {
                         input.disabled = false;
                     }
                 }
-            });
+            }
+            checkbox.addEventListener("change", updateDisabledState);
+
+            updateDisabledState();
         }
     }
 
