@@ -193,14 +193,18 @@ class SoD {
                 },
                 save: function() {
                     textarea.backup.update();
-                    localStorage.setItem(`notes_${textarea.backup.data.id}`, JSON.stringify(textarea.backup.data));
-                    textarea.backup.statusReport("save", `Saved ${textarea.backup.data.notes.length} characters.`);
+                    const existingBackup = localStorage.getItem(textarea.backup.key);
+                    const currentContent = JSON.stringify(textarea.backup.data);
+                    if (currentContent !== existingBackup) {
+                        localStorage.setItem(textarea.backup.key, currentContent);
+                        textarea.backup.statusReport("save", `Saved ${textarea.backup.data.notes.length} characters to local backup.`);
+                    }
                 },
                 restore: function() {
-                    const backupData = JSON.parse(localStorage.getItem(`notes_${textarea.backup.data.id}`));
+                    const backupData = JSON.parse(localStorage.getItem(textarea.backup.key));
                     if (backupData.notes.length > 0) {
                         textarea.value = backupData.notes;
-                        textarea.backup.statusReport("restore", `Restored ${textarea.backup.data.notes.length} characters from local backup.`);
+                        textarea.backup.statusReport("restore", `Restored ${backupData.notes.length} characters from local backup.`);
                     }
                 },
                 statusPopup: document.createElement("div"),
@@ -212,7 +216,8 @@ class SoD {
                         textarea.backup.statusPopup.classList.remove(className);
                         textarea.backup.statusPopup.innerText = "";
                     }, timeToLive);
-                }
+                },
+                key: `notes_${textarea.backup.data.id}`
             }
             textarea.backup.statusPopup.classList.add("status-popup");
             textarea.insertAdjacentElement("afterend", textarea.backup.statusPopup);
