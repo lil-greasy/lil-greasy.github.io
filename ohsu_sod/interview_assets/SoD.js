@@ -201,8 +201,11 @@ class SoD {
                     if (backupData.notes.length > 0) {
                         textarea.value = backupData.notes;
                     }
-                }
+                },
+                statusPopup: document.createElement("div")
             }
+            textarea.statusPopup.classList.add("status-popup");
+            textarea.insertAdjacentElement(textara.statusPopup, "afterend");
 
             if (textarea.value.length < 1) {
                 textarea.backup.restore();
