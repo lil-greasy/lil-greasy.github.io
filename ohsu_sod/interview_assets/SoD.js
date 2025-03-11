@@ -182,7 +182,7 @@ class SoD {
 
         if (textarea) {
             textarea.backupData = {
-                id: SoD.getCurrentInterview.applicant.id,
+                id: SoD.getCurrentInterview().applicant.id,
                 timestamp: Date.now(),
                 notes: textarea.value,
                 update: function() {
