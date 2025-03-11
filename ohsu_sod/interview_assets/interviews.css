@@ -263,7 +263,11 @@ table.rubric-key {
         text-transform: uppercase;
         font-weight: bold;
         vertical-align: bottom;
-        border-bottom: 1px solid var(--marquam);
+
+        & td {
+            border-bottom: 1px solid var(--charcoal);
+            text-align: center;
+        }
     }
     & td {
         width: 20%;
