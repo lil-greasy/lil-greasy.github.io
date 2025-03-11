@@ -135,12 +135,19 @@ class SoD {
         while (!domClimber.classList.contains("QuestionOuter")) {
             domClimber = domClimber.parentElement;
         }
-        domClimber.classList.add(markerClass);
         return domClimber.querySelector(targetQuery);
     };
+    static #labelQuestionContainer(markerQuery, className = markerQuery) {
+        let domClimber = document.querySelector(markerQuery);
+        while (!domClimber.classList.contains("QuestionOuter")) {
+            domClimber = domClimber.parentElement;
+        }
+        domClimber.classList.add(className);
+    }
 
     static activateEvalSkipper() {
         const checkbox = SoD.#findCousinElement(".eval-skipper", "input[type=\"checkbox\"]");
+        SoD.labelQuestionContainer(".eval-skipper");
 
         if (checkbox) {
             function getOtherQuestionInputs() {
