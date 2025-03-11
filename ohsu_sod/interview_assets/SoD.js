@@ -203,7 +203,7 @@ class SoD {
                     }
                 }
             }
-            setInterval(textarea.backup.data.save, saveInterval);
+            setInterval(textarea.backup.save, saveInterval);
         }
     }
 
