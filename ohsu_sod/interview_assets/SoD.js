@@ -218,7 +218,7 @@ class SoD {
                     }, timeToLive);
                 }
             }
-            textarea.backup.key: `notes_${textarea.backup.data.id}`
+            textarea.backup.key: `notes_${textarea.backup.data.id}`;
             textarea.backup.statusPopup.classList.add("status-popup");
             textarea.insertAdjacentElement("afterend", textarea.backup.statusPopup);
 
