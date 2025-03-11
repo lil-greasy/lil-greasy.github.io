@@ -194,13 +194,13 @@ class SoD {
                 save: function() {
                     textarea.backup.update();
                     localStorage.setItem(`notes_${textarea.backup.data.id}`, JSON.stringify(textarea.backup.data));
-                    textarea.backup.statusReport(`Saved ${textarea.backup.data.notes.length} characters.`);
+                    textarea.backup.statusReport(save, `Saved ${textarea.backup.data.notes.length} characters.`);
                 },
                 restore: function() {
                     const backupData = JSON.parse(localStorage.getItem(`notes_${textarea.backup.data.id}`));
                     if (backupData.notes.length > 0) {
                         textarea.value = backupData.notes;
-                        textarea.backup.statusReport(`Restored ${textarea.backup.data.notes.length} characters from local backup.`);
+                        textarea.backup.statusReport(restore, `Restored ${textarea.backup.data.notes.length} characters from local backup.`);
                     }
                 },
                 statusPopup: document.createElement("div"),
