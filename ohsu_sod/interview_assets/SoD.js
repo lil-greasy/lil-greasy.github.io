@@ -196,6 +196,8 @@ class SoD {
                     const existingBackup = localStorage.getItem(textarea.backup.key);
                     const currentContent = JSON.stringify(textarea.backup.data);
                     if (currentContent !== existingBackup) {
+                        console.log(currentContent);
+                        console.log(existingBackup);
                         localStorage.setItem(textarea.backup.key, currentContent);
                         textarea.backup.statusReport("save", `Saved ${textarea.backup.data.notes.length} characters to local backup.`);
                     }

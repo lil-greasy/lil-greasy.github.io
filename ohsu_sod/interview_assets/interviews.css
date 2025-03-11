@@ -240,6 +240,7 @@ div.instructional-notes {
         background-color: var(--charcoal);
         color: #ffffff;
         padding: 0.5em;
+        border-radius: var(--narrow-round);
     }
     & .status-popup:not(.active) {
         display: none;
