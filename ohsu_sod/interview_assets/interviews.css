@@ -227,10 +227,15 @@ div.instructional-notes {
     font-style: italic;
     line-height: 1.2em;
 }
-.Skin #SkinContent .TE .ML textarea {
-    height: 20rem;
-    background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
-    font-size: 85%;
+.Skin #SkinContent .TE .ML {
+    & textarea {
+        height: 20rem;
+        background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
+        font-size: 85%;
+    }
+    & .status-popup {
+        
+    }
 }
 
 body.skip-eval #Questions .QuestionOuter:not(.eval-skipper) {

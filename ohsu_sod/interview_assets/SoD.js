@@ -216,9 +216,9 @@ class SoD {
                         textarea.backup.statusPopup.classList.remove(className);
                         textarea.backup.statusPopup.innerText = "";
                     }, timeToLive);
-                },
-                key: `notes_${textarea.backup.data.id}`
+                }
             }
+            textarea.backup.key: `notes_${textarea.backup.data.id}`
             textarea.backup.statusPopup.classList.add("status-popup");
             textarea.insertAdjacentElement("afterend", textarea.backup.statusPopup);
 
