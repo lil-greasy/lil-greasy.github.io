@@ -185,6 +185,9 @@ class SoD {
             insertionPoint.replaceChildren(rubricKey);
 
             const slider = SoD.#findCousinElement(rubricKey.classSafeQualityName, "input.ResultsInput");
+            slider.addEventListener("input", function() {
+                console.log("changed");
+            })
         }
     };
 
@@ -335,7 +338,11 @@ class RubricKey {
         const quality = SoD.evalRubric.qualities[qualityName];
 
         const rubricKey = document.createElement("table");
-        rubricKey.classSafeQualityName = qualityName.replace(" ", "-").replace("/", "-").replace(",","");
+        rubricKey.classSafeQualityName = qualityName
+            .replace(" ", "-")
+            .replace("/", "-")
+            .replace(",","")
+            .toLowerCase();
         rubricKey.classList.add("rubric-key", rubricKey.classSafeQualityName);
         
         const tHead = document.createElement("thead");
