@@ -195,9 +195,14 @@ class SoD {
                     textarea.backup.update();
                     localStorage.setItem(`notes_${textarea.backup.data.id}`, JSON.stringify(textarea.backup.data));
                     console.log(textarea.backup);
+                },
+                restore: function() {
+                    const backupData = JSON.parse(localStorage.getItem(`notes_${textarea.backup.data.id}`));
+                    if (backupData.notes.length > 0) {
+                        textarea.value = backupData.notes;
+                    }
                 }
             }
-    
             setInterval(textarea.backup.data.save, saveInterval);
         }
     }
