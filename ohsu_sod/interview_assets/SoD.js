@@ -328,9 +328,10 @@ class SoD {
 class RubricKey {
     constructor(quality) {
         if (!SoD.evalRubric) {
-            throw new Error("Unable to create eval slider. Evaluation rubric not loaded.");
+            throw new Error("Unable to create rubric key. Evaluation rubric not loaded.");
         }
         quality = SoD.evalRubric[quality];
+        console.log(quality);
 
         const rubricKey = document.createElement("table");
         rubricKey.classList.add("rubric-key");
