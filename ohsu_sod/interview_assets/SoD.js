@@ -194,15 +194,25 @@ class SoD {
                 save: function() {
                     textarea.backup.update();
                     localStorage.setItem(`notes_${textarea.backup.data.id}`, JSON.stringify(textarea.backup.data));
-                    console.log(textarea.backup);
+                    textarea.backup.statusReport(`Saved ${textarea.backup.data.notes.length} characters.`);
                 },
                 restore: function() {
                     const backupData = JSON.parse(localStorage.getItem(`notes_${textarea.backup.data.id}`));
                     if (backupData.notes.length > 0) {
                         textarea.value = backupData.notes;
+                        textarea.backup.statusReport(`Restored ${textarea.backup.data.notes.length} characters from local backup.`);
                     }
                 },
-                statusPopup: document.createElement("div")
+                statusPopup: document.createElement("div"),
+                statusReport: function(class, message) {
+                    const timeToLive = 8 * 1000;
+                    textarea.backup.statusPopup.classList.add(class);
+                    textarea.backup.statusPopup.innerText = message;
+                    setTimeout(function() {
+                        textarea.backup.statusPopup.classList.remove(class);
+                        textarea.backup.statusPopup.innerText = "";
+                    }, timeToLive);
+                }
             }
             textarea.backup.statusPopup.classList.add("status-popup");
             textarea.insertAdjacentElement("afterend", textarea.backup.statusPopup);
