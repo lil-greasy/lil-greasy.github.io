@@ -198,7 +198,7 @@ class SoD {
                 }
             }
     
-            setInterval(textarea.backupData.save, saveInterval);
+            setInterval(textarea.backup.data.save, saveInterval);
         }
     }
 
