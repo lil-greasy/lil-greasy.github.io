@@ -196,7 +196,7 @@ class SoD {
             }
 
             rubricKey.slider = SoD.#findCousinElement(rubricKey.classSafeQualityName, "input.ResultsInput");
-            slider.observer = new MutationObserver(function() {
+            rubricKey.slider.observer = new MutationObserver(function() {
                 updateHighlight(rubricKey);
             });
             slider.observer.observe(rubricKey.slider, {attributes: true});
