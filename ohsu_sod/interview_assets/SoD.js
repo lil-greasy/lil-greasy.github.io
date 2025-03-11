@@ -130,8 +130,8 @@ class SoD {
         linkElement.href = url;
     };
 
-    static #findCousinElement(markerClass, targetQuery) {
-        let domClimber = document.querySelector(`.${markerClass}`);
+    static #findCousinElement(markerQuery, targetQuery) {
+        let domClimber = document.querySelector(markerQuery);
         while (!domClimber.classList.contains("QuestionOuter")) {
             domClimber = domClimber.parentElement;
         }
@@ -140,7 +140,7 @@ class SoD {
     };
 
     static activateEvalSkipper() {
-        const checkbox = SoD.#findCousinElement("eval-skipper", "input[type=\"checkbox\"]");
+        const checkbox = SoD.#findCousinElement(".eval-skipper", "input[type=\"checkbox\"]");
 
         if (checkbox) {
             function getOtherQuestionInputs() {
@@ -196,7 +196,7 @@ class SoD {
                 }
             }
 
-            rubricKey.slider = SoD.#findCousinElement(rubricKey.classSafeQualityName, "input.ResultsInput");
+            rubricKey.slider = SoD.#findCousinElement(`[quality=${rubricKey.getAttribute("quality")}`, "input.ResultsInput");
             rubricKey.slider.observer = new MutationObserver(function() {
                 updateHighlight(rubricKey);
             });
@@ -351,12 +351,8 @@ class RubricKey {
         const quality = SoD.evalRubric.qualities[qualityName];
 
         const rubricKey = document.createElement("table");
-        rubricKey.classSafeQualityName = qualityName
-            .replace(" ", "-")
-            .replace("/", "-")
-            .replace(",","")
-            .toLowerCase();
-        rubricKey.classList.add("rubric-key", rubricKey.classSafeQualityName);
+        rubricKey.classList.add("rubric-key");
+        rubricKey.setAttribute("quality", qualityName);
         
         const tHead = document.createElement("thead");
         tHead.tr = document.createElement("tr");
