@@ -85,7 +85,7 @@ class SoD {
             }
 
             interview.number = interviews.indexOf(interview) + 1;
-            interview.applicant.fullName = `${interview.applicant.firstName} ${insterview.applicant.lastName}`;
+            interview.applicant.fullName = `${interview.applicant.firstName} ${interview.applicant.lastName}`;
             interview.questionsAsHTML = function() {
                 const scrollWrapper = document.createElement("div");
                 scrollWrapper.classList.add("question-list-scroll-wrapper");
