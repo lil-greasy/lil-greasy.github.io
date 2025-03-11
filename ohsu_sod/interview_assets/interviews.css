@@ -241,9 +241,13 @@ div.instructional-notes {
         color: #ffffff;
         padding: 0.5em;
         border-radius: var(--narrow-round);
+        opacity: 1;
+        transition: all 2s ease-in-out;
+        transition-behavior: allow-discrete;
     }
     & .status-popup:not(.active) {
         display: none;
+        opacity: 0;
     }
 }
 

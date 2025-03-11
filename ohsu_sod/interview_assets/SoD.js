@@ -196,8 +196,6 @@ class SoD {
                     const existingBackup = JSON.parse(localStorage.getItem(textarea.backup.key));
                     const currentContent = textarea.backup.data;
                     if (currentContent.notes !== existingBackup.notes) {
-                        console.log(currentContent);
-                        console.log(existingBackup);
                         localStorage.setItem(textarea.backup.key, JSON.stringify(currentContent));
                         textarea.backup.statusReport("save", `Saved ${textarea.backup.data.notes.length} characters to local backup.`);
                     }
@@ -211,12 +209,11 @@ class SoD {
                 },
                 statusPopup: document.createElement("div"),
                 statusReport: function(className, message) {
-                    const timeToLive = 8 * 1000;
-                    textarea.backup.statusPopup.classList.add("active", className);
+                    const timeToLive = 4 * 1000;
                     textarea.backup.statusPopup.innerText = message;
+                    textarea.backup.statusPopup.classList.add("active", className);
                     setTimeout(function() {
                         textarea.backup.statusPopup.classList.remove("active", className);
-                        textarea.backup.statusPopup.innerText = "";
                     }, timeToLive);
                 }
             }
