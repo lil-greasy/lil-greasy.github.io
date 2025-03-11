@@ -335,7 +335,7 @@ class RubricKey {
         const quality = SoD.evalRubric.qualities[qualityName];
 
         const rubricKey = document.createElement("table");
-        rubricKey.classSafeQualityName = classSafeQualityName.replace(" ", "-").replace("/", "-").replace(",","");
+        rubricKey.classSafeQualityName = qualityName.replace(" ", "-").replace("/", "-").replace(",","");
         rubricKey.classList.add("rubric-key", rubricKey.classSafeQualityName);
         
         const tHead = document.createElement("thead");
