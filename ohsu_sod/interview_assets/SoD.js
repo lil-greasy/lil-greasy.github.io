@@ -251,6 +251,8 @@ class SoD {
             }
         }
         insertNames();
+        
+        SoD.activateNotepadBackup();
     }
 
     static async init() {
@@ -258,7 +260,6 @@ class SoD {
         SoD.replaceFavIcon();
 
         SoD.activateEvalSkipper();
-        SoD.activateNotepadBackup();
 
         try {
             SoD.evalRubric = await SoD.#fetchJSON(SoD.#evalRubricURL, "evaluation rubric");
