@@ -204,8 +204,8 @@ class SoD {
                 },
                 statusPopup: document.createElement("div")
             }
-            textarea.statusPopup.classList.add("status-popup");
-            textarea.insertAdjacentElement(textara.statusPopup, "afterend");
+            textarea.backup.statusPopup.classList.add("status-popup");
+            textarea.insertAdjacentElement(textara.backup.statusPopup, "afterend");
 
             if (textarea.value.length < 1) {
                 textarea.backup.restore();
