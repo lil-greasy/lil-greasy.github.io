@@ -67,7 +67,7 @@ class SoD {
             }
         }
         return false;
-    }
+    };
 
     static loadInterviews() {
         const interviews = [];
@@ -119,7 +119,7 @@ class SoD {
             }
         }
         return interviews;
-    }
+    };
 
     static hideQualtricsAd() {
         const ad = document.getElementById("Plug");
@@ -137,7 +137,7 @@ class SoD {
         }
         domClimber.classList.add(markerClass);
         return domClimber.querySelector(targetQuery);
-    }
+    };
 
     static activateEvalSkipper() {
         const checkbox = SoD.#findCousinElement("eval-skipper", "input[type=\"checkbox\"]");
@@ -174,9 +174,9 @@ class SoD {
             checkbox.checked = false;
             updateDisabledState();
         }
-    }
+    };
 
-    insertRubricKeys() {
+    static insertRubricKeys() {
         const insertionPoints = document.querySelectorAll(".insertion-point.rubric-key");
 
         for (const insertionPoint of insertionPoints) {
@@ -184,7 +184,7 @@ class SoD {
             const rubricKey = new RubricKey(quality);
             insertionPoint.appendChild(rubricKey);
         }
-    }
+    };
 
     static activateNotepadBackup() {
         const textarea = this.#findCousinElement("notepad-marker", "textarea");
@@ -236,7 +236,7 @@ class SoD {
             }
             setInterval(textarea.backup.save, saveInterval);
         }
-    }
+    };
 
     static #onInterviewDataReady() {
         function populateTOC() {
@@ -292,7 +292,7 @@ class SoD {
         
         SoD.activateNotepadBackup();
         SoD.insertRubricKeys();
-    }
+    };
 
     static async init() {
         SoD.hideQualtricsAd();
