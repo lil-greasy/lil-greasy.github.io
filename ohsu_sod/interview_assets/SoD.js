@@ -184,10 +184,22 @@ class SoD {
             const rubricKey = new RubricKey(quality);
             insertionPoint.replaceChildren(rubricKey);
 
-            const slider = SoD.#findCousinElement(rubricKey.classSafeQualityName, "input.ResultsInput");
-            console.log(slider);
-            slider.observer = new MutationObserver(function() { console.log("changed.")});
-            slider.observer.observe(slider, {attributes: true});
+            function updateHighlight(rubricKey) {
+                const currentScore = rubricKey.slider.getAttribute("aria-valuenow");
+                for (const td of rubricKey.querySelector("td")) {
+                    if (td.getAttribute("score") == currentScore) {
+                        td.classList.add("highlight");
+                    } else {
+                        td.classList.remove("highlight");
+                    }
+                }
+            }
+
+            rubricKey.slider = SoD.#findCousinElement(rubricKey.classSafeQualityName, "input.ResultsInput");
+            slider.observer = new MutationObserver(function() {
+                updateHighlight(rubricKey);
+            });
+            slider.observer.observe(rubricKey.slider, {attributes: true});
         }
     };
 
