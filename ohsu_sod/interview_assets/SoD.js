@@ -130,19 +130,19 @@ class SoD {
         linkElement.href = url;
     };
 
+    static #findCousinElement(markerClass, targetQuery) {
+        let domClimber = document.querySelector(`.${markerClass}`);
+        while (!domClimber.classList.contains("QuestionOuter")) {
+            domClimber = domClimber.parentElement;
+        }
+        domClimber.classList.add(markerClass);
+        return domClimber.querySelector(targetQuery);
+    }
+
     static activateEvalSkipper() {
-        const skipperMarker = document.querySelector(".eval-skipper");
+        const checkbox = SoD.#findCousinElement("eval-skipper", "input[type=\"checkbox\"]");
 
-        if (skipperMarker) {
-            let domClimber = skipperMarker;
-            while (!domClimber.classList.contains("QuestionOuter")) {
-                domClimber = domClimber.parentElement;
-            }
-            const questionRoot = domClimber;
-            questionRoot.classList.add("eval-skipper");
-    
-            const checkbox = domClimber.querySelector("input[type=\"checkbox\"]");
-
+        if (checkbox) {
             function getOtherQuestionInputs() {
                 const otherQuestionContainers = document.querySelectorAll(".QuestionOuter:not(.eval-skipper)");
                 let inputs = [];
