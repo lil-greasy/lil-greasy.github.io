@@ -262,16 +262,21 @@ table.rubric-key {
     & thead {
         text-transform: uppercase;
         font-weight: bold;
+        vertical-align: bottom;
+        border-bottom: 1px solid var(--marquam);
     }
     & td {
         width: 20%;
     }
     & tbody {
+        & td {
+            vertical-align: top;
+        }
         & p {
         font-style: italic;
         }
         & ul {
-            padding-left: 0;
+            padding-left: 1em;
         }
     }
 }
