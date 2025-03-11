@@ -203,7 +203,7 @@ class SoD {
                 }
             }
 
-            rubricKey.slider = SoD.#findCousinElement(`[quality=${rubricKey.getAttribute("quality")}`, "input.ResultsInput");
+            rubricKey.slider = SoD.#findCousinElement(`[quality="${rubricKey.getAttribute("quality")}"`, "input.ResultsInput");
             rubricKey.slider.observer = new MutationObserver(function() {
                 updateHighlight(rubricKey);
             });
