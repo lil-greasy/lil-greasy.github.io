@@ -178,7 +178,7 @@ class SoD {
 
     static activateNotepadBackup() {
         const textarea = this.#findCousinElement("notepad-marker", "textarea");
-        const saveInterval = 30 * 1000;
+        const saveInterval = 10 * 1000;
 
         if (textarea) {
             textarea.backup = {
@@ -193,7 +193,7 @@ class SoD {
                 },
                 save: function() {
                     textarea.backup.update();
-                    localStorage.setItem(`$notes_${textarea.backup.data.id}`, JSON.stringify(textarea.backup.data));
+                    localStorage.setItem(`notes_${textarea.backup.data.id}`, JSON.stringify(textarea.backup.data));
                     console.log(textarea.backup);
                 }
             }
