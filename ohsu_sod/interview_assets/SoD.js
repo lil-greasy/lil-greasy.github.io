@@ -176,6 +176,16 @@ class SoD {
         }
     }
 
+    insertRubricKeys() {
+        const insertionPoints = document.querySelectorAll(".insertion-point.rubric-key");
+
+        for (const insertionPoint of insertionPoints) {
+            const quality = insertionPoint.getAttribute("quality");
+            const rubricKey = new RubricKey(quality);
+            insertionPoint.appendChild(rubricKey);
+        }
+    }
+
     static activateNotepadBackup() {
         const textarea = this.#findCousinElement("notepad-marker", "textarea");
         const saveInterval = 10 * 1000;
@@ -209,7 +219,7 @@ class SoD {
                 },
                 statusPopup: document.createElement("div"),
                 statusReport: function(className, message) {
-                    const timeToLive = 4 * 1000;
+                    const timeToLive = 2 * 1000;
                     textarea.backup.statusPopup.innerText = message;
                     textarea.backup.statusPopup.classList.add("active", className);
                     setTimeout(function() {
@@ -281,6 +291,7 @@ class SoD {
         insertNames();
         
         SoD.activateNotepadBackup();
+        SoD.insertRubricKeys();
     }
 
     static async init() {
