@@ -267,6 +267,8 @@ table.rubric-key {
         & td {
             border-bottom: 1px solid var(--charcoal);
             text-align: center;
+            border-top-left-radius: var(--med-round);
+            border-top-right-radius: var(--med-round);
         }
     }
     & td {

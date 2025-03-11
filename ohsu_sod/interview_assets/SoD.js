@@ -183,6 +183,8 @@ class SoD {
             const quality = insertionPoint.getAttribute("quality");
             const rubricKey = new RubricKey(quality);
             insertionPoint.replaceChildren(rubricKey);
+
+            const slider = SoD.#findCousinElement(rubricKey.classSafeQualityName, "input.ResultsInput");
         }
     };
 
@@ -326,14 +328,15 @@ class SoD {
 }
 
 class RubricKey {
-    constructor(quality) {
+    constructor(qualityName) {
         if (!SoD.evalRubric) {
             throw new Error("Unable to create rubric key. Evaluation rubric not loaded.");
         }
-        quality = SoD.evalRubric.qualities[quality];
+        const quality = SoD.evalRubric.qualities[qualityName];
 
         const rubricKey = document.createElement("table");
-        rubricKey.classList.add("rubric-key");
+        rubricKey.classSafeQualityName = classSafeQualityName.replace(" ", "-").replace("/", "-").replace(",","");
+        rubricKey.classList.add("rubric-key", rubricKey.classSafeQualityName);
         
         const tHead = document.createElement("thead");
         tHead.tr = document.createElement("tr");
@@ -349,6 +352,7 @@ class RubricKey {
             tHead.tr.appendChild(headTD);
 
             const bodyTD = document.createElement("td");
+            bodyTD.setAttribute("score", score);
             if (quality[score].description) {
                 const description = document.createElement("p");
                 description.classList.add("description");
