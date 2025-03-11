@@ -234,7 +234,15 @@ div.instructional-notes {
         font-size: 85%;
     }
     & .status-popup {
-        
+        position: absolute;
+        bottom: 2em;
+        left: 0.5em;
+        background-color: var(--charcoal);
+        color: #ffffff;
+        padding: 0.5em;
+    }
+    & .status-popup:not(.active) {
+        display: none;
     }
 }
 

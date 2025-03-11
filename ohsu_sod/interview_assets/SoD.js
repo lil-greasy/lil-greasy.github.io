@@ -210,10 +210,10 @@ class SoD {
                 statusPopup: document.createElement("div"),
                 statusReport: function(className, message) {
                     const timeToLive = 8 * 1000;
-                    textarea.backup.statusPopup.classList.add(className);
+                    textarea.backup.statusPopup.classList.add("active", className);
                     textarea.backup.statusPopup.innerText = message;
                     setTimeout(function() {
-                        textarea.backup.statusPopup.classList.remove(className);
+                        textarea.backup.statusPopup.classList.remove("active", className);
                         textarea.backup.statusPopup.innerText = "";
                     }, timeToLive);
                 }
