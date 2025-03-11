@@ -182,7 +182,7 @@ class SoD {
         for (const insertionPoint of insertionPoints) {
             const quality = insertionPoint.getAttribute("quality");
             const rubricKey = new RubricKey(quality);
-            insertionPoint.appendChild(rubricKey);
+            insertionPoint.replaceChildren(rubricKey);
         }
     };
 
@@ -330,6 +330,7 @@ class RubricKey {
         if (!SoD.evalRubric) {
             throw new Error("Unable to create eval slider. Evaluation rubric not loaded.");
         }
+        quality = SoD.evalRubric[quality];
 
         const rubricKey = document.createElement("table");
         rubricKey.classList.add("rubric-key");
