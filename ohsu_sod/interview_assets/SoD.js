@@ -181,18 +181,20 @@ class SoD {
         const saveInterval = 30 * 1000;
 
         if (textarea) {
-            textarea.backupData = {
-                id: SoD.getCurrentInterview().applicant.id,
-                timestamp: Date.now(),
-                notes: textarea.value,
+            textarea.backup = {
+                data: {
+                    id: SoD.getCurrentInterview().applicant.id,
+                    timestamp: Date.now(),
+                    notes: textarea.value
+                },
                 update: function() {
-                    this.timestamp = Date.now();
-                    this.notes = textarea.value;
+                    textarea.backup.data.timestamp = Date.now();
+                    textarea.backup.data.notes = textarea.value;
                 },
                 save: function() {
-                    this.update();
-                    localStorage.setItem(`$notes_{this.id}`, JSON.stringify(this));
-                    console.log(this);
+                    textarea.backup.update();
+                    localStorage.setItem(`$notes_${textarea.backup.data.id}`, JSON.stringify(textarea.backup.data));
+                    console.log(textarea.backup);
                 }
             }
     
