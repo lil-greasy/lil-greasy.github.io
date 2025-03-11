@@ -147,7 +147,7 @@ class SoD {
 
     static activateEvalSkipper() {
         const checkbox = SoD.#findCousinElement(".eval-skipper", "input[type=\"checkbox\"]");
-        SoD.#labelQuestionContainer(".eval-skipper");
+        SoD.#labelQuestionContainer("eval-skipper");
 
         if (checkbox) {
             function getOtherQuestionInputs() {
