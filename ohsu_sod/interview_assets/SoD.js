@@ -212,7 +212,7 @@ class SoD {
     };
 
     static activateNotepadBackup() {
-        const textarea = this.#findCousinElement("notepad-marker", "textarea");
+        const textarea = this.#findCousinElement(".notepad-marker", "textarea");
         const saveInterval = 10 * 1000;
 
         if (textarea) {
