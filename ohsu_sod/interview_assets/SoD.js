@@ -155,15 +155,14 @@ class SoD {
                 return inputs;
             }
             function updateDisabledState() {
+                const otherInputs = getOtherQuestionInputs();
                 if (checkbox.checked) {
                     document.body.classList.add("skip-eval");
-                    const otherInputs = getOtherQuestionInputs();
                     for (const input of otherInputs) {
                         input.disabled = true;
                     }
                 } else {
                     document.body.classList.remove("skip-eval");
-                    const otherInputs = getOtherQuestionInputs();
                     for (const input of otherInputs) {
                         input.disabled = false;
                     }
@@ -171,23 +170,16 @@ class SoD {
             }
             checkbox.addEventListener("input", updateDisabledState);
 
+            // I don’t know why we have to manually uncheck the checkbox!
             checkbox.checked = false;
             updateDisabledState();
         }
     }
 
     static activateNotepadBackup() {
-        const notepadMarker = document.querySelector(".notepad-marker");
+        const textarea = this.#findCousinElement("notepad-marker", "textarea");
 
-        if (notepadMarker) {
-            let domClimber = notepadMarker;
-            while (!domClimber.classList.contains("QuestionOuter")) {
-                domClimber = domClimber.parentElement;
-            }
-            const questionRoot = domClimber;
-            questionRoot.classList.add("notepad");
-
-            const textarea = questionRoot.querySelector("textarea");
+        if (textarea) {
 
             function saveToEmbeddedData() {
                 Qualtrics.SurveyEngine.setJSEmbeddedData(`notepad_backup_${SoD.getCurrentInterview.number}`, textarea.value);
