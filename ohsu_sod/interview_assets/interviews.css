@@ -254,3 +254,22 @@ div.instructional-notes {
 body.skip-eval #Questions .QuestionOuter:not(.eval-skipper) {
     opacity: 0.5;
 }
+
+table.rubric-key {
+
+
+    & thead {
+        text-transform: uppercase;
+        font-size: 75%;
+        font-weight: bold;
+    }
+    & td {
+        width: 20%;
+    }
+    & tbody {
+        font-size: 75%;
+    }
+    & ul {
+        padding-left: 0;
+    }
+}
