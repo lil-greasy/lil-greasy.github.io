@@ -330,7 +330,7 @@ class RubricKey {
         if (!SoD.evalRubric) {
             throw new Error("Unable to create rubric key. Evaluation rubric not loaded.");
         }
-        quality = SoD.evalRubric[quality];
+        quality = SoD.evalRubric.qualities[quality];
         console.log(quality);
 
         const rubricKey = document.createElement("table");
