@@ -186,7 +186,7 @@ class SoD {
 
             function updateHighlight(rubricKey) {
                 const currentScore = rubricKey.slider.getAttribute("aria-valuenow");
-                for (const td of rubricKey.querySelector("td")) {
+                for (const td of rubricKey.querySelectorAll("td")) {
                     if (td.getAttribute("score") == currentScore) {
                         td.classList.add("highlight");
                     } else {
