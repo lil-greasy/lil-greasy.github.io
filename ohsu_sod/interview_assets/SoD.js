@@ -199,7 +199,7 @@ class SoD {
             rubricKey.slider.observer = new MutationObserver(function() {
                 updateHighlight(rubricKey);
             });
-            slider.observer.observe(rubricKey.slider, {attributes: true});
+            rubricKey.slider.observer.observe(rubricKey.slider, {attributes: true});
         }
     };
 
