@@ -186,9 +186,8 @@ class SoD {
 
             const slider = SoD.#findCousinElement(rubricKey.classSafeQualityName, "input.ResultsInput");
             console.log(slider);
-            slider.addEventListener("input", function() {
-                console.log("changed");
-            })
+            slider.observer = new MutationObserver(function() { console.log("changed.")});
+            slider.observer.observe(slider, {attribbutes: true});
         }
     };
 
