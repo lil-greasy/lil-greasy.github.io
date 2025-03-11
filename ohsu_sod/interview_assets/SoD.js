@@ -178,16 +178,25 @@ class SoD {
 
     static activateNotepadBackup() {
         const textarea = this.#findCousinElement("notepad-marker", "textarea");
+        const saveInterval = 30 * 1000;
 
         if (textarea) {
-
-            function saveToEmbeddedData() {
-                Qualtrics.SurveyEngine.setJSEmbeddedData(`notepad_backup_${SoD.getCurrentInterview.number}`, textarea.value);
-                console.log("💾");
+            textarea.backupData = {
+                id: SoD.getCurrentInterview.applicant.id,
+                timestamp: Date.now(),
+                notes: textarea.value,
+                update: function() {
+                    this.timestamp = Date.now();
+                    this.notes = textarea.value;
+                },
+                save: function() {
+                    this.update();
+                    localStorage.setItem(`$notes_{this.id}`, JSON.stringify(this));
+                    console.log(this);
+                }
             }
-
-            const interval = 30 * 1000;
-            setInterval(saveToEmbeddedData, interval);
+    
+            setInterval(textarea.backupData.save, saveInterval);
         }
     }
 
