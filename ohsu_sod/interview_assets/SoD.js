@@ -203,9 +203,9 @@ class SoD {
                     }
                 }
             }
-            
+
             if (textarea.value.length < 1) {
-                textareabackup.restore();
+                textarea.backup.restore();
             }
             setInterval(textarea.backup.save, saveInterval);
         }
