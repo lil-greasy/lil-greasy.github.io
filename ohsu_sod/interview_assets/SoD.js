@@ -137,7 +137,7 @@ class SoD {
         }
         return domClimber.querySelector(targetQuery);
     };
-    static #labelQuestionContainer(markerQuery, className = markerQuery) {
+    static #labelQuestionContainer(markerQuery, className = markerQuery.replace(".", "")) {
         let domClimber = document.querySelector(markerQuery);
         while (!domClimber.classList.contains("QuestionOuter")) {
             domClimber = domClimber.parentElement;
@@ -147,7 +147,7 @@ class SoD {
 
     static activateEvalSkipper() {
         const checkbox = SoD.#findCousinElement(".eval-skipper", "input[type=\"checkbox\"]");
-        SoD.#labelQuestionContainer("eval-skipper");
+        SoD.#labelQuestionContainer(".eval-skipper");
 
         if (checkbox) {
             function getOtherQuestionInputs() {
