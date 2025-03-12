@@ -199,9 +199,12 @@ class SoD {
                     } else {
                         td.classList.remove("selected");
                     }
+<<<<<<< HEAD
+                    if (td.getAttribute("score") == hoverScore) {
+=======
                     console.log(`Comparing ${td.getAttribute("score")} to ${hoverScore}`);
-                    if (td.getAttribute("score" == hoverScore)) {
-                        console.log("match!");
+                    if (td.getAttribute("score") == hoverScore) {
+>>>>>>> 3a587f974227e2ea55e31c470ea18d2594f733e4
                         td.classList.add("hover");
                     } else {
                         td.classList.remove("hover");
