@@ -253,7 +253,7 @@ div.instructional-notes {
     }
 
     & .QuestionOuter {
-        overflow-y: auto;
+        overflow-y: visible;
     }
 
     & label.q-focused:is(.MultipleAnswer, .SingleAnswer) {

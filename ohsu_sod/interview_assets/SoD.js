@@ -130,20 +130,6 @@ class SoD {
         linkElement.href = url;
     };
 
-    static #findCousinElement(markerQuery, targetQuery) {
-        let domClimber = document.querySelector(markerQuery);
-        while (!domClimber.classList.contains("QuestionOuter")) {
-            domClimber = domClimber.parentElement;
-        }
-        return domClimber.querySelector(targetQuery);
-    };
-    static #labelQuestionContainer(markerQuery, className = markerQuery.replace(".", "")) {
-        let domClimber = document.querySelector(markerQuery);
-        while (!domClimber.classList.contains("QuestionOuter")) {
-            domClimber = domClimber.parentElement;
-        }
-        domClimber.classList.add(className);
-    };
     static #markQuestionContainer(startingPoint, className) {
         let domClimber = startingPoint;
         while (!domClimber.classList.contains("QuestionOuter")) {
@@ -154,8 +140,9 @@ class SoD {
     };
 
     static activateEvalSkipper() {
-        const checkbox = SoD.#findCousinElement(".eval-skipper", "input[type=\"checkbox\"]");
-        SoD.#labelQuestionContainer(".eval-skipper");
+        const skipperMarker = document.querySelector(".eval-skipper");
+        const questionContainer = SoD.#markQuestionContainer(skipperMarker, "eval-skipper");
+        const checkbox = questionContainer.querySelector("input[type=\"checkbox\"]");
 
         if (checkbox) {
             function getOtherQuestionInputs() {
