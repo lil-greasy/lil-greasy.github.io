@@ -241,6 +241,9 @@ class SoD {
         const markers = document.querySelectorAll(".observations-insertion-marker");
         for (const marker of markers) {
             const questionContainer = SoD.#markQuestionContainer(marker, "observations");
+            const textarea = questionContainer.querySelector("textarea");
+
+            textarea.removeAttribute("style");
         }
     };
 

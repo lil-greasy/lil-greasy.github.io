@@ -332,3 +332,10 @@ div.instructional-notes {
         }
     }
 }
+
+.Skin .QuestionOuter.observations {
+
+    label {
+        padding-bottom: 0.5em;
+    }
+}
