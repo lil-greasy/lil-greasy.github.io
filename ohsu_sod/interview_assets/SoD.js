@@ -199,7 +199,9 @@ class SoD {
                     } else {
                         td.classList.remove("selected");
                     }
+                    console.log(`Comparing ${td.getAttribute("score")} to ${hoverScore}`);
                     if (td.getAttribute("score" == hoverScore)) {
+                        console.log("match!");
                         td.classList.add("hover");
                     } else {
                         td.classList.remove("hover");
@@ -215,7 +217,6 @@ class SoD {
 
             for (const td of rubricKey.querySelectorAll("td")) {
                 td.addEventListener("mouseenter", function() {
-                    console.log("hover!");
                     updateColumnStates(rubricKey, td.getAttribute("score"));
                 });
             }
