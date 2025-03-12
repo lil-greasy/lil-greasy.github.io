@@ -57,13 +57,10 @@ class SoD {
     static getCurrentInterview() {
         const tocList = document.querySelector("#sidebar ul.toc-entries");
         for (const listItem of tocList.children) {
-            if (listItem.classList.contains("Current")) {
+            const h3 = listItem.querySelector("h3");
+            if (h3.classList.contains("active")) {
                 const interviewIndex = listItem.getAttribute("interview-index");
-                if (interviewIndex) {
-                    return SoD.interviews[interviewIndex];
-                } else {
-                    return false;
-                }
+                return listItem.interview;
             }
         }
         return false;
@@ -315,6 +312,7 @@ class SoD {
                 listItem.label = listItem.querySelector("h3 div");
                 listItem.setAttribute("aadsas-id", interview.applicant.id);
                 listItem.setAttribute("interview-number", interview.number);
+                listItem.interview = interview;
                 listItem.label.innerText = interview.applicant.fullName;
             }
         }
