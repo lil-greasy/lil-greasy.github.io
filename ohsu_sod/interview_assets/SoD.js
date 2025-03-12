@@ -206,12 +206,19 @@ class SoD {
 
         for (const insertionMarker of insertionMarkers) {
             const qualityName = insertionMarker.getAttribute("quality");
+            const quality = SoD.evalRubric.qualities[qualityName];
             const questionContainer = SoD.#markQuestionContainer(insertionMarker, "quality-rating-question");
             const listItems = questionContainer.querySelectorAll("li.Selection");
 
             for (const li of listItems) {
-                const score = li.querySelector("label.SingleAnswer span").innerText;
-                console.log(score);
+                const label = li.querySelector("label.SingleAnswer span")
+                const score = label.innerText;
+                
+                const scoreName = document.createElement("span");
+                scoreName.classList.add("score-name");
+                scoreName.innerText = SoD.evalRubric.scores[score];
+
+                label.appendChild("scoreName");
             }
         }
     };
