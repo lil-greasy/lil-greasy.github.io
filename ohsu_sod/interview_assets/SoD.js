@@ -367,8 +367,6 @@ class SoD {
         SoD.hideQualtricsAd();
         SoD.replaceFavIcon();
 
-        SoD.activateEvalSkipper();
-
         try {
             SoD.evalRubric = await SoD.#fetchJSON(SoD.#evalRubricURL, "evaluation rubric");
         } catch (error) {
@@ -391,6 +389,8 @@ class SoD {
         if (SoD.interviews.length > 0) {
             SoD.#onInterviewDataReady();
         }
+
+        SoD.activateEvalSkipper();
     };
 }
 
