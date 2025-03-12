@@ -140,12 +140,16 @@ header {
         & button[aria-label="Toggle Table of Contents menu"] {
             display: none;
         }
-        & .popper {
-            display: block;
-            & .toc-tree {
-                & ul.toc-entries {
-                    display: flex;
-                    flex-direction: row;
+        & .popper-container {
+            width: auto;
+            height: auto;
+            & .popper {
+                display: block;
+                & .toc-tree {
+                    & ul.toc-entries {
+                        display: flex;
+                        flex-direction: row;
+                    }
                 }
             }
         }
