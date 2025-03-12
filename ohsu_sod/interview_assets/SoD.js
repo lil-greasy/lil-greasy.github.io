@@ -207,7 +207,7 @@ class SoD {
         for (const insertionMarker of insertionMarkers) {
             const qualityName = insertionMarker.getAttribute("quality");
             const questionContainer = SoD.#markQuestionContainer(insertionMarker, "quality-rating-question");
-            const listItems = questionContainer.querySelector("li.Selection");
+            const listItems = questionContainer.querySelectorAll("li.Selection");
 
             for (const li of listItems) {
                 const score = li.querySelector("input").value;
