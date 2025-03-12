@@ -294,5 +294,12 @@ table.rubric-key {
 
     & li.Selection {
         width:20%;
+
+        & label.SingleAnswer {
+
+            & span::before {
+                display: none;
+            }
+        }
     }
 }
