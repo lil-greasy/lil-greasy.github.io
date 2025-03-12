@@ -156,6 +156,14 @@ header {
                     & ul.toc-entries {
                         display: flex;
                         flex-direction: row;
+                        & li {
+                            & h3.toc-entry {
+                                padding-inline-start: 0;
+                                & .status {
+                                    display: none;
+                                }
+                            }
+                        }
                     }
                 }
             }
