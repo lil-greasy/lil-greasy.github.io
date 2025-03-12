@@ -311,11 +311,11 @@ table.rubric-key {
             }
 
             & span.score-name {
-                diplsay: block;
+                display: block;
                 font-weight: bold;
                 font-style: normal;
                 text-transform: uppercase;
-                letter-spacing: 0.2em;
+                letter-spacing: 0.125em;
             }
 
             & ul.keywords {
