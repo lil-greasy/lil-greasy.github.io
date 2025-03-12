@@ -133,10 +133,13 @@ header {
 
 #canvas-heading {
     position: fixed;
+    z-index: 99;
+    width: 100%;
     background-color: var(--marquam);
     padding: 0.5em;
 
     & #sidebar {
+        width: 100%;
         & button[aria-label="Toggle Table of Contents menu"] {
             display: none;
         }
