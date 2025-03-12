@@ -146,6 +146,7 @@ header {
             height: auto;
             & .popper {
                 display: block;
+                position: static;
                 & .toc-tree {
                     max-width: 100%;
                     padding: 0;
