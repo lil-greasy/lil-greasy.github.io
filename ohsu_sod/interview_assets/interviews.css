@@ -41,6 +41,7 @@
 :root {
     --horizon: #FFD334;
     --marquam: #78A1D3;
+    --marquam-light: color-mix(in srgb, var(--marquam) 15%, #ffffff 85%);
     --terwilliger: #72B840;
     --charcoal: #53595F;
     --magenta: #E23694;
@@ -135,7 +136,7 @@ header {
     position: fixed;
     z-index: 99;
     width: 100%;
-    background-color: var(--marquam);
+    background-color: var(--marquam-light);
     padding: 0.5em;
 
     & #sidebar {
@@ -153,6 +154,11 @@ header {
                 & .toc-tree {
                     max-width: 100%;
                     padding: 0;
+                    background-color: transparent;
+                    border: none;
+                    & .toc-header {
+                        padding-inline-start: 0;
+                    }
                     & ul.toc-entries {
                         display: flex;
                         flex-direction: row;
@@ -162,6 +168,14 @@ header {
                                 & .status {
                                     display: none;
                                 }
+                            }
+                            & h3.toc-entry.active {
+                                cursor: default;
+                            }
+                            & h3.toc-entry.active, h3.toc-entry a {
+                                border: 1px solid var(--marquam);
+                                padding: 0.5em;
+                                border-radius: var(--narrow-round);
                             }
                         }
                     }
