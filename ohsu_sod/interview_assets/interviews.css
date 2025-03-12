@@ -156,14 +156,17 @@ header {
                     padding: 0;
                     background-color: transparent;
                     border: none;
+                    box-shadow: none;
                     & .toc-header {
                         padding-inline-start: 0;
                     }
                     & ul.toc-entries {
                         display: flex;
                         flex-direction: row;
+                        gap: 0.5em;
                         & li {
                             & h3.toc-entry {
+                                padding: 0;
                                 padding-inline-start: 0;
                                 & .status {
                                     display: none;
