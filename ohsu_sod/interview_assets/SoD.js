@@ -245,7 +245,9 @@ class SoD {
     };
 
     static activateNotepadBackup() {
-        const textarea = this.#findCousinElement(".notepad-marker", "textarea");
+        const marker = document.querySelector(".notepad-marker");
+        const questionContainer = SoD.#markQuestionContainer(marker, "notepad");
+        const textarea = questionContainer.querySelector("textarea");
         const saveInterval = 10 * 1000;
 
         if (textarea) {
