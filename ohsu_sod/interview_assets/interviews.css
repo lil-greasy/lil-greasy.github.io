@@ -296,9 +296,11 @@ table.rubric-key {
         width:20%;
 
         & label.SingleAnswer {
-            padding-left: 0 !important;
-            font-size: 74%;
+            padding: 1em 0.5em;
+            padding-left: 0.5em !important;
+            font-size: 75%;
             font-style: italic;
+            cursor: pointer;
 
             & span::before {
                 display: none;
@@ -307,11 +309,18 @@ table.rubric-key {
             & span.score-name {
                 font-weight: bold;
                 font-style: normal;
+                margin-right: 0.75em;
             }
 
             & ul.keywords {
                 padding-left: 1em;
             }
+        }
+        & label.SingleAnswer:hover {
+            background-color: var(--horizon);
+        }
+        & label.SingleAnswer.q-checked {
+            background-color: var(--magenta);
         }
     }
 }
