@@ -236,7 +236,7 @@ class SoD {
                     for (const keyword of scoreKeywordsContent) {
                         const li = document.createElement("li");
                         li.innerText = keyword;
-                        scoreKeywords.appendChild("li");
+                        scoreKeywords.appendChild(li);
                     }
                     label.appendChild(scoreKeywords);
                 }
