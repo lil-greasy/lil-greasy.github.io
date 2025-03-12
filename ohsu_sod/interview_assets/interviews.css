@@ -146,6 +146,7 @@ header {
             & .popper {
                 display: block;
                 & .toc-tree {
+                    max-width: 100%;
                     & ul.toc-entries {
                         display: flex;
                         flex-direction: row;
