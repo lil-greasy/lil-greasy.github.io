@@ -274,7 +274,7 @@ div.instructional-notes {
         flex-direction: row;
 
         & li.Selection {
-            width:20%;
+            width:calc(20% - 4em - 4px);
             cursor: pointer;
 
             & label.SingleAnswer {
@@ -310,6 +310,11 @@ div.instructional-notes {
                 margin-bottom: 0;
             }
         }
+        & li.Selection:not(:first-child) {
+            border-left: 1px dotted var(--marquam);
+            margin-left: 0.5em;
+            padding-left: 0.5em;
+        }
         & li.Selection[score="1"] label.SingleAnswer.q-checked {
             background-color: var(--hot-red);
             color: #fff0f0;
@@ -335,7 +340,11 @@ div.instructional-notes {
 
 .Skin .QuestionOuter.observations {
 
-    label {
+    & label {
         padding-bottom: 0.5em;
+    }
+
+    & textarea {
+        height: 5em;
     }
 }
