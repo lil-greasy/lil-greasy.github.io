@@ -311,22 +311,25 @@ table.rubric-key {
                 font-weight: bold;
                 font-style: normal;
                 text-transform: uppercase;
+                letter-spacing: 0.5em;
                 margin-right: 0.75em;
             }
 
             & ul.keywords {
                 padding-left: 1em;
+                margin-top: 0.5em;
             }
         }
         & label.SingleAnswer.q-checked {
             background-color: var(--magenta);
         }
+
+        & .LabelWrapper {
+            height: 100%;
+            margin-bottom: 0;
+        }
     }
-    & li.Selection:hover {
-        outline: 1px solid var(--marquam);
-    }
-    & li.Selection .LabelWrapper {
-        height: 100%;
-        margin-bottom: 0;
+    & li.Selection[score="1"] label.SingleAnswer.q-checked {
+        background-color: var(--hot-red);
     }
 }

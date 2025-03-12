@@ -213,6 +213,7 @@ class SoD {
             for (const li of listItems) {
                 const label = li.querySelector("label.SingleAnswer span")
                 const score = label.innerText;
+                li.setAttribute("score", score);
 
                 label.innerText = "";
                 
