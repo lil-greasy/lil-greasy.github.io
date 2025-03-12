@@ -141,12 +141,14 @@ header {
             display: none;
         }
         & .popper-container {
+            position: static;
             width: auto;
             height: auto;
             & .popper {
                 display: block;
                 & .toc-tree {
                     max-width: 100%;
+                    padding: 0;
                     & ul.toc-entries {
                         display: flex;
                         flex-direction: row;
