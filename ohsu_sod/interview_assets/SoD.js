@@ -311,11 +311,11 @@ class SoD {
             const tocListItems = document.querySelectorAll("#sidebar .toc-tree .toc-entries > li");
             const tocLabels = document.querySelectorAll("#Toc ul li a .TocText");
             for (const interview of SoD.interviews) {
-                const listItem = tocListItems[index];
+                const listItem = tocListItems[SoD.interviews.indexOf(interview)];
                 listItem.label = listItem.querySelector("h3 div");
                 listItem.setAttribute("aadsas-id", interview.applicant.id);
                 listItem.setAttribute("interview-number", interview.number);
-                listIrem.label.innerText = interview.applicant.fullName;
+                listItem.label.innerText = interview.applicant.fullName;
             }
         }
         populateTOC();
