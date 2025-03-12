@@ -230,7 +230,6 @@ div.instructional-notes {
 .Skin {
     & #SkinContent .TE .ML {
         & textarea {
-            height: 20rem;
             background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
             font-size: 85%;
         }
@@ -264,6 +263,11 @@ div.instructional-notes {
     }
 }
 
+.Skin .QuestionOuter.notepad {
+    textarea {
+        height: 20rem;}
+}
+
 .Skin .quality-rating-question {
     & .quality-name {
         font-size: 200%;
@@ -274,7 +278,7 @@ div.instructional-notes {
         flex-direction: row;
 
         & li.Selection {
-            width:calc(20% - 4em - 4px);
+            width:20%;
             cursor: pointer;
 
             & label.SingleAnswer {
@@ -345,6 +349,6 @@ div.instructional-notes {
     }
 
     & textarea {
-        height: 5em;
+        height: 10em;
     }
 }
