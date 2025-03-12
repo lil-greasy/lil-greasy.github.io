@@ -210,6 +210,11 @@ class SoD {
             const questionContainer = SoD.#markQuestionContainer(insertionMarker, "quality-rating-question");
             const listItems = questionContainer.querySelectorAll("li.Selection");
 
+            const qualitySpan = document.createElement("span");
+            qualitySpan.classList.add("quality-name");
+            qualitySpan.innerText = qualityName;
+            insertionMarker.replaceChildren(qualitySpan);
+
             for (const li of listItems) {
                 const label = li.querySelector("label.SingleAnswer span")
                 const score = label.innerText;

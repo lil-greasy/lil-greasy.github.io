@@ -288,65 +288,72 @@ table.rubric-key {
     }
 }
 
-.Skin .quality-rating-question ul.ChoiceStructure {
-    display: flex;
-    flex-direction: row;
+.Skin .quality-rating-question {
+    & .quality-name {
+        font-weight: bold;
+        font-size: 200%;
+    }
 
-    & li.Selection {
-        width:20%;
-        cursor: pointer;
+    & ul.ChoiceStructure {
+        display: flex;
+        flex-direction: row;
 
-        & label.SingleAnswer {
-            height: 100%;
-            padding: 1em 0.5em;
-            padding-left: 0.5em !important;
-            font-size: 75%;
-            font-style: italic;
+        & li.Selection {
+            width:20%;
+            cursor: pointer;
 
-            & >span {
-                display: block;
+            & label.SingleAnswer {
+                height: 100%;
+                padding: 1em 0.5em;
+                padding-left: 0.5em !important;
+                font-size: 80%;
+                font-style: italic;
+
+                & >span {
+                    display: block;
+                }
+                & >span::before {
+                    display: none;
+                }
+
+                & span.score-name {
+                    display: block;
+                    font-weight: bold;
+                    font-style: normal;
+                    text-transform: uppercase;
+                    letter-spacing: 0.125em;
+                }
+
+                & ul.keywords {
+                    padding-left: 1em;
+                    margin-top: 0.5em;
+                }
             }
-            & >span::before {
-                display: none;
-            }
 
-            & span.score-name {
-                display: block;
-                font-weight: bold;
-                font-style: normal;
-                text-transform: uppercase;
-                letter-spacing: 0.125em;
-            }
-
-            & ul.keywords {
-                padding-left: 1em;
-                margin-top: 0.5em;
+            & .LabelWrapper {
+                height: 100%;
+                margin-bottom: 0;
             }
         }
-
-        & .LabelWrapper {
-            height: 100%;
-            margin-bottom: 0;
+        & li.Selection[score="1"] label.SingleAnswer.q-checked {
+            background-color: var(--hot-red);
+            color: #fff0f0;
         }
-    }
-    & li.Selection[score="1"] label.SingleAnswer.q-checked {
-        background-color: var(--hot-red);
-        color: #fff0f0;
-    }
-    & li.Selection[score="2"] label.SingleAnswer.q-checked {
-        background-color: var(--orange);
-        color: #120800;
-    }
-    & li.Selection[score="3"] label.SingleAnswer.q-checked {
-        background-color: var(--horizon);
-        color: #2f1200;
-    }
-    & li.Selection[score="4"] label.SingleAnswer.q-checked {
-        background-color: var(--light-green);
-        color: #002400;
-    }
-    & li.Selection[score="5"] label.SingleAnswer.q-checked {
-        background-color: var(--green);
-        color: #f0fff0;
+        & li.Selection[score="2"] label.SingleAnswer.q-checked {
+            background-color: var(--orange);
+            color: #120800;
+        }
+        & li.Selection[score="3"] label.SingleAnswer.q-checked {
+            background-color: var(--horizon);
+            color: #2f1200;
+        }
+        & li.Selection[score="4"] label.SingleAnswer.q-checked {
+            background-color: var(--light-green);
+            color: #002400;
+        }
+        & li.Selection[score="5"] label.SingleAnswer.q-checked {
+            background-color: var(--green);
+            color: #f0fff0;
+        }
     }
 }
