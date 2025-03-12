@@ -55,7 +55,7 @@ class SoD {
     };
 
     static getCurrentInterview() {
-        const tocList = document.querySelector("#Toc > ul");
+        const tocList = document.querySelector("#sidebar ul.toc-entries");
         for (const listItem of tocList.children) {
             if (listItem.classList.contains("Current")) {
                 const interviewIndex = listItem.getAttribute("interview-index");
