@@ -238,7 +238,7 @@ class SoD {
     };
 
     static customizeObservationQuestions() {
-        const markers = document.querySelector(".observations-insertion-marker");
+        const markers = document.querySelectorAll(".observations-insertion-marker");
         for (const marker of markers) {
             const questionContainer = SoD.#markQuestionContainer(marker, "observations");
         }
@@ -352,6 +352,7 @@ class SoD {
         
         SoD.activateNotepadBackup();
         SoD.populateScoringQuestions();
+        SoD.customizeObservationQuestions();
     };
 
     static async init() {
