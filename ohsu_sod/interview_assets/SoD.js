@@ -308,16 +308,14 @@ class SoD {
 
     static #onInterviewDataReady() {
         function populateTOC() {
+            const tocListItems = document.querySelectorAll("#sidebar .toc-tree .toc-entries > li");
             const tocLabels = document.querySelectorAll("#Toc ul li a .TocText");
-            const tocListItems = document.querySelectorAll("#Toc ul > li");
             for (const interview of SoD.interviews) {
-                const index = SoD.interviews.indexOf(interview);
-                const interviewNumber = index + 1;
                 const listItem = tocListItems[index];
+                listItem.label = listItem.querySelector("h3 div");
                 listItem.setAttribute("aadsas-id", interview.applicant.id);
-                listItem.setAttribute("interview-number", interviewNumber);
-                listItem.setAttribute("interview-index", index);
-                tocLabels[index].innerText = interview.applicant.fullName;
+                listItem.setAttribute("interview-number", interview.number);
+                listIrem.label.innerText = interview.applicant.fullName;
             }
         }
         populateTOC();
