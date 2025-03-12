@@ -127,12 +127,26 @@ dialog {
     }
 }
 
-#header {
+header {
     display: none;
 }
 
 #canvas-heading {
+    position: fixed;
     background-color: var(--marquam);
+    padding: 0.5em;
+
+    & #sidebar {
+        & button[aria-label="Toggle Table of Contents menu"] {
+            display: none;
+        }
+        & .popper {
+            display: block;
+            & .toc-tree {
+
+            }
+        }
+    }
 }
 
 .ActivePage .Skin #TocSidebarContainer {
