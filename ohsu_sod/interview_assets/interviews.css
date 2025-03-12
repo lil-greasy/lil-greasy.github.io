@@ -143,7 +143,10 @@ header {
         & .popper {
             display: block;
             & .toc-tree {
-
+                & ul.toc-entries {
+                    display: flex;
+                    flex-direction: row;
+                }
             }
         }
     }
