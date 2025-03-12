@@ -311,7 +311,7 @@ table.rubric-key {
                 font-weight: bold;
                 font-style: normal;
                 text-transform: uppercase;
-                letter-spacing: 0.5em;
+                letter-spacing: 0.2em;
                 margin-right: 0.75em;
             }
 
@@ -331,5 +331,22 @@ table.rubric-key {
     }
     & li.Selection[score="1"] label.SingleAnswer.q-checked {
         background-color: var(--hot-red);
+        color: #fff0f0;
+    }
+    & li.Selection[score="2"] label.SingleAnswer.q-checked {
+        background-color: var(--orange);
+        color: #fff8f0;
+    }
+    & li.Selection[score="3"] label.SingleAnswer.q-checked {
+        background-color: var(--horizon);
+        color: #2f1200;
+    }
+    & li.Selection[score="4"] label.SingleAnswer.q-checked {
+        background-color: var(--light-green);
+        color: #002400;
+    }
+    & li.Selection[score="5"] label.SingleAnswer.q-checked {
+        background-color: var(--green;
+        color: #f0fff0;
     }
 }
