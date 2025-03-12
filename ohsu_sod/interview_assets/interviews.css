@@ -288,12 +288,13 @@ table.rubric-key {
     }
 }
 
-.quality-rating-question ul.ChoiceStructure {
+.Skin .quality-rating-question ul.ChoiceStructure {
     display: flex;
     flex-direction: row;
 
     & li.Selection {
         width:20%;
+        padding-left: 0 !important;
 
         & label.SingleAnswer {
 

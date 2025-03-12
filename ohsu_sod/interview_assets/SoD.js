@@ -229,6 +229,17 @@ class SoD {
                     label.appendChild(scoreDescription);
                 }
 
+                const scoreKeywordsContent = quality[score].keywords;
+                if (scoreKeywordsContent) {
+                    const scoreKeywords = document.createElement("ul");
+                    scoreKeywords.classList.append("keywords");
+                    for (const keyword of scoreKeywordsContent) {
+                        const li = document.createElement("li");
+                        li.innerText = keyword;
+                        scoreKeywords.appendChild("li");
+                    }
+                    label.appendChild(scoreKeywords);
+                }
             }
         }
     };
