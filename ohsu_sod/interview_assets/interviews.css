@@ -232,6 +232,7 @@ div.instructional-notes {
         & textarea {
             background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
             font-size: 85%;
+            border-width: 1px;
         }
         & .status-popup {
             position: absolute;

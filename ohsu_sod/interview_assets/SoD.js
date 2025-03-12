@@ -122,7 +122,7 @@ class SoD {
     };
 
     static hideQualtricsAd() {
-        const ad = document.getElementById("Plug");
+        const ad = document.getElementById("plug-container");
         ad.remove();
     };
     static replaceFavIcon(url = "https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_sj3IStYjELgtVdx") {
@@ -246,6 +246,11 @@ class SoD {
             textarea.removeAttribute("style");
         }
     };
+
+    static createFakeNotepad() {
+        const fakeNotepadContainer = document.createElement("div");
+        const fakeNotepad = document.createElement("textarea");
+    }
 
     static activateNotepadBackup() {
         const marker = document.querySelector(".notepad-marker");
