@@ -287,3 +287,12 @@ table.rubric-key {
         }
     }
 }
+
+.QuestionBody ul.ChoiceStructure {
+    display: flex;
+    flex-direction: row;
+
+    & li.Selection {
+        width:20%;
+    }
+}
