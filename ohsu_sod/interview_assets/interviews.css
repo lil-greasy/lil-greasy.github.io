@@ -294,13 +294,14 @@ table.rubric-key {
 
     & li.Selection {
         width:20%;
+        cursor: pointer;
 
         & label.SingleAnswer {
+            height: 100%;
             padding: 1em 0.5em;
             padding-left: 0.5em !important;
             font-size: 75%;
             font-style: italic;
-            cursor: pointer;
 
             & span::before {
                 display: none;
@@ -309,6 +310,7 @@ table.rubric-key {
             & span.score-name {
                 font-weight: bold;
                 font-style: normal;
+                text-transform: uppercase;
                 margin-right: 0.75em;
             }
 
@@ -316,11 +318,15 @@ table.rubric-key {
                 padding-left: 1em;
             }
         }
-        & label.SingleAnswer:hover {
-            background-color: var(--horizon);
-        }
         & label.SingleAnswer.q-checked {
             background-color: var(--magenta);
         }
+    }
+    & li.Selection:hover {
+        outline: 1px solid var(--marquam);
+    }
+    & li.Selection .LabelWrapper {
+        height: 100%;
+        margin-bottom: 0;
     }
 }
