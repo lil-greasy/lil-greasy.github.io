@@ -122,7 +122,7 @@ class SoD {
     };
 
     static hideQualtricsAd() {
-        const ad = document.getElementById("plug-container");
+        const ad = document.querySelector(".plug-container");
         ad.remove();
     };
     static replaceFavIcon(url = "https://ohsu.yul1.qualtrics.com/ControlPanel/File.php?F=F_sj3IStYjELgtVdx") {
