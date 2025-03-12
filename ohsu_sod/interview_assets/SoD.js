@@ -213,12 +213,22 @@ class SoD {
             for (const li of listItems) {
                 const label = li.querySelector("label.SingleAnswer span")
                 const score = label.innerText;
+
+                label.innerText = "";
                 
                 const scoreName = document.createElement("span");
                 scoreName.classList.add("score-name");
                 scoreName.innerText = SoD.evalRubric.scores[score];
-
                 label.appendChild(scoreName);
+
+                const scoreDescContent = quality[score].description;
+                if (scoreDescContent) {
+                    const scoreDescription = document.createElement("span");
+                    scoreDescription.classList.add("score-description");
+                    scoreDescription.innerText = scoreDescContent;
+                    label.appendChild(scoreDescription);
+                }
+
             }
         }
     };
