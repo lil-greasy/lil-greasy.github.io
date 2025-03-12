@@ -294,12 +294,23 @@ table.rubric-key {
 
     & li.Selection {
         width:20%;
-        padding-left: 0 !important;
 
         & label.SingleAnswer {
+            padding-left: 0 !important;
+            font-size: 74%;
+            font-style: italic;
 
             & span::before {
                 display: none;
+            }
+
+            & span.score-name {
+                font-weight: bold;
+                font-style: normal;
+            }
+
+            & ul.keywords {
+                padding-left: 1em;
             }
         }
     }
