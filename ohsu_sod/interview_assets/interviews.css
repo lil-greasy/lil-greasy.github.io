@@ -227,32 +227,41 @@ div.instructional-notes {
     font-style: italic;
     line-height: 1.2em;
 }
-.Skin #SkinContent .TE .ML {
-    & textarea {
-        height: 20rem;
-        background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
-        font-size: 85%;
+.Skin {
+    & #SkinContent .TE .ML {
+        & textarea {
+            height: 20rem;
+            background-color: color-mix(in srgb, var(--horizon) 10%, #ffffff 75%);
+            font-size: 85%;
+        }
+        & .status-popup {
+            position: absolute;
+            bottom: 2em;
+            left: 0.5em;
+            background-color: var(--charcoal);
+            color: #ffffff;
+            padding: 0.5em;
+            border-radius: var(--narrow-round);
+            opacity: 1;
+            transition: all 2s ease-in-out;
+            transition-behavior: allow-discrete;
+        }
+        & .status-popup:not(.active) {
+            display: none;
+            opacity: 0;
+        }
     }
-    & .status-popup {
-        position: absolute;
-        bottom: 2em;
-        left: 0.5em;
-        background-color: var(--charcoal);
-        color: #ffffff;
-        padding: 0.5em;
-        border-radius: var(--narrow-round);
-        opacity: 1;
-        transition: all 2s ease-in-out;
-        transition-behavior: allow-discrete;
-    }
-    & .status-popup:not(.active) {
-        display: none;
-        opacity: 0;
-    }
-}
 
-body.skip-eval #Questions .QuestionOuter:not(.eval-skipper) {
-    opacity: 0.5;
+    & .QuestionOuter {
+        overflow-y: auto;
+    }
+
+    & label.q-focused:is(.MultipleAnswer, .SingleAnswer) {
+        background-color: color-mix(in srgb, var(--marquam) 15%, #ffffff 85%);
+    }
+    & body.skip-eval #Questions .QuestionOuter:not(.eval-skipper) {
+        opacity: 0.5;
+    }
 }
 
 table.rubric-key {
@@ -290,7 +299,6 @@ table.rubric-key {
 
 .Skin .quality-rating-question {
     & .quality-name {
-        font-weight: bold;
         font-size: 200%;
     }
 

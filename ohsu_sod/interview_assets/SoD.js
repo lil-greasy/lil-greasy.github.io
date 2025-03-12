@@ -201,7 +201,7 @@ class SoD {
         }
     };
 
-    static insertScoringDescriptions() {
+    static populateScoringQuestions() {
         const insertionMarkers = document.querySelectorAll(".rubric-insertion-marker");
 
         for (const insertionMarker of insertionMarkers) {
@@ -355,7 +355,7 @@ class SoD {
         insertNames();
         
         SoD.activateNotepadBackup();
-        SoD.insertRubricKeys();
+        SoD.populateScoringQuestions();
     };
 
     static async init() {
