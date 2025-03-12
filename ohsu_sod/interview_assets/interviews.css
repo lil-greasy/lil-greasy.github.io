@@ -286,10 +286,4 @@ table.rubric-key {
             padding-left: 1em;
         }
     }
-    & col {
-        border: 1px solid transparent;
-    }
-    & col:hover {
-        border-color: var(--light-blue);
-    }
 }

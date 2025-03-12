@@ -190,24 +190,37 @@ class SoD {
             const quality = insertionPoint.getAttribute("quality");
             const rubricKey = new RubricKey(quality);
             insertionPoint.replaceChildren(rubricKey);
-
-            function updateHighlight(rubricKey) {
+            
+            function updateColumnStates(rubricKey, hoverScore = null) {
                 const currentScore = rubricKey.slider.getAttribute("value");
-                console.log(`current score: ${currentScore}`);
                 for (const td of rubricKey.querySelectorAll("td")) {
                     if (td.getAttribute("score") == currentScore) {
-                        td.classList.add("highlight");
+                        td.classList.add("selected");
                     } else {
-                        td.classList.remove("highlight");
+                        td.classList.remove("selected");
+                    }
+                    if (td.getAttribute("score" == hoverScore)) {
+                        td.classList.add("hover");
+                    } else {
+                        td.classList.remove("hover");
                     }
                 }
             }
 
             rubricKey.slider = SoD.#findCousinElement(`[quality="${rubricKey.getAttribute("quality")}"`, "input.ResultsInput");
             rubricKey.slider.observer = new MutationObserver(function() {
-                updateHighlight(rubricKey);
+                updateColumnStates(rubricKey);
             });
             rubricKey.slider.observer.observe(rubricKey.slider, {attributes: true});
+
+            for (const td of rubricKey.querySelectorAll("td")) {
+                td.addEventListener("mouseenter", function() {
+                    updateColumnStates(rubricKey, td.getAttribute("score"));
+                });
+            }
+            rubricKey.addEventListener("mouseleave", function() {
+                updateColumnStates(rubricKey);
+            })
         }
     };
 
@@ -360,8 +373,6 @@ class RubricKey {
         const rubricKey = document.createElement("table");
         rubricKey.classList.add("rubric-key");
         rubricKey.setAttribute("quality", qualityName);
-
-        const colgroup = document.createElement("colgroup");
         
         const tHead = document.createElement("thead");
         tHead.tr = document.createElement("tr");
@@ -370,10 +381,6 @@ class RubricKey {
         const tBody = document.createElement("tbody");
         tBody.tr = document.createElement("tr");
         for (const score in SoD.evalRubric.scores) {
-            const col = document.createElement("col");
-            col.setAttribute("score", score);
-            colgroup.appendChild(col);
-
             const headTD = document.createElement("td");
             headTD.classList.add("score-name");
             headTD.setAttribute("score", score);
@@ -404,7 +411,6 @@ class RubricKey {
         }
         tBody.appendChild(tBody.tr);
 
-        rubricKey.appendChild(colgroup);
         rubricKey.appendChild(tHead);
         rubricKey.appendChild(tBody);
         return rubricKey;
