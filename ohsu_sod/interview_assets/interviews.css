@@ -127,6 +127,14 @@ dialog {
     }
 }
 
+#header {
+    display: none;
+}
+
+#canvas-heading {
+    background-color: var(--marquam);
+}
+
 .ActivePage .Skin #TocSidebarContainer {
     width: 100%;
     position: fixed;
