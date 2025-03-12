@@ -237,6 +237,13 @@ class SoD {
         }
     };
 
+    static customizeObservationQuestions() {
+        const markers = document.querySelector(".observations-insertion-marker");
+        for (const marker of markers) {
+            const questionContainer = SoD.#markQuestionContainer(marker, "observations");
+        }
+    };
+
     static activateNotepadBackup() {
         const textarea = this.#findCousinElement(".notepad-marker", "textarea");
         const saveInterval = 10 * 1000;

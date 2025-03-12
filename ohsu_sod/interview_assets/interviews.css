@@ -264,39 +264,6 @@ div.instructional-notes {
     }
 }
 
-table.rubric-key {
-    border-collapse: collapse;
-    font-size: 75%;
-    line-height: 1.4;
-
-    & thead {
-        text-transform: uppercase;
-        font-weight: bold;
-        vertical-align: bottom;
-
-        & td {
-            border-bottom: 1px solid var(--charcoal);
-            text-align: center;
-            border-top-left-radius: var(--med-round);
-            border-top-right-radius: var(--med-round);
-        }
-    }
-    & td {
-        width: 20%;
-    }
-    & tbody {
-        & td {
-            vertical-align: top;
-        }
-        & p {
-        font-style: italic;
-        }
-        & ul {
-            padding-left: 1em;
-        }
-    }
-}
-
 .Skin .quality-rating-question {
     & .quality-name {
         font-size: 200%;
