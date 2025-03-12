@@ -303,7 +303,10 @@ table.rubric-key {
             font-size: 75%;
             font-style: italic;
 
-            & span::before {
+            & >span {
+                display: block;
+            }
+            & >span::before {
                 display: none;
             }
 
@@ -320,9 +323,6 @@ table.rubric-key {
                 margin-top: 0.5em;
             }
         }
-        & label.SingleAnswer.q-checked {
-            background-color: var(--magenta);
-        }
 
         & .LabelWrapper {
             height: 100%;
@@ -335,7 +335,7 @@ table.rubric-key {
     }
     & li.Selection[score="2"] label.SingleAnswer.q-checked {
         background-color: var(--orange);
-        color: #fff8f0;
+        color: #120800;
     }
     & li.Selection[score="3"] label.SingleAnswer.q-checked {
         background-color: var(--horizon);
@@ -346,7 +346,7 @@ table.rubric-key {
         color: #002400;
     }
     & li.Selection[score="5"] label.SingleAnswer.q-checked {
-        background-color: var(--green;
+        background-color: var(--green);
         color: #f0fff0;
     }
 }
