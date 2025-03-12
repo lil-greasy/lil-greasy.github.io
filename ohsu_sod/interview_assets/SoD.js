@@ -232,7 +232,7 @@ class SoD {
                 const scoreKeywordsContent = quality[score].keywords;
                 if (scoreKeywordsContent) {
                     const scoreKeywords = document.createElement("ul");
-                    scoreKeywords.classList.append("keywords");
+                    scoreKeywords.classList.add("keywords");
                     for (const keyword of scoreKeywordsContent) {
                         const li = document.createElement("li");
                         li.innerText = keyword;
