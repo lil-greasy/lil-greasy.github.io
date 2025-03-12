@@ -143,7 +143,14 @@ class SoD {
             domClimber = domClimber.parentElement;
         }
         domClimber.classList.add(className);
-    }
+    };
+    static #addClassToQuestionContainer(startingPoint, className) {
+        let domClimber = startingPoint;
+        while (!domClimber.classList.contains("QuestionOuter")) {
+            domClimber = domClimber.parentElement;
+        }
+        domClimber.classList.add(className);
+    };
 
     static activateEvalSkipper() {
         const checkbox = SoD.#findCousinElement(".eval-skipper", "input[type=\"checkbox\"]");
@@ -190,39 +197,17 @@ class SoD {
             const quality = insertionPoint.getAttribute("quality");
             const rubricKey = new RubricKey(quality);
             insertionPoint.replaceChildren(rubricKey);
-            
-            function updateColumnStates(rubricKey, hoverScore = null) {
-                const currentScore = rubricKey.slider.getAttribute("value");
-                for (const td of rubricKey.querySelectorAll("td")) {
-                    if (td.getAttribute("score") == currentScore) {
-                        td.classList.add("selected");
-                    } else {
-                        td.classList.remove("selected");
-                    }
-                    if (td.getAttribute("score") == hoverScore) {
-                        td.classList.add("hover");
-                    } else {
-                        td.classList.remove("hover");
-                    }
-                }
-            }
-
-            rubricKey.slider = SoD.#findCousinElement(`[quality="${rubricKey.getAttribute("quality")}"`, "input.ResultsInput");
-            rubricKey.slider.observer = new MutationObserver(function() {
-                updateColumnStates(rubricKey);
-            });
-            rubricKey.slider.observer.observe(rubricKey.slider, {attributes: true});
-
-            for (const td of rubricKey.querySelectorAll("td")) {
-                td.addEventListener("mouseenter", function() {
-                    updateColumnStates(rubricKey, td.getAttribute("score"));
-                });
-            }
-            rubricKey.addEventListener("mouseleave", function() {
-                updateColumnStates(rubricKey);
-            })
         }
     };
+
+    static insertScoringDescriptions() {
+        const insertionMarkers = document.querySelectorAll(".rubric-insertion-marker");
+
+        for (const insertionMarker of insertionMarkers) {
+            const qualityName = insertionMarker.getAttribute("quality");
+            SoD.#addClassToQuestionContainer(insertionMarker, "quality-rating-question");
+        }
+    }
 
     static activateNotepadBackup() {
         const textarea = this.#findCousinElement(".notepad-marker", "textarea");
@@ -292,7 +277,7 @@ class SoD {
         }
         populateTOC();
 
-        function insertQuestions() {
+        function insertInterviewQuestions() {
             const insertionPoints = document.querySelectorAll(".question-content[content-type='questions']");
             const interview = SoD.getCurrentInterview();
             for (const insertionPoint of insertionPoints) {
@@ -309,7 +294,7 @@ class SoD {
                 }
             }
         }
-        insertQuestions();
+        insertInterviewQuestions();
 
         function insertNames() {
             const replacements = [
