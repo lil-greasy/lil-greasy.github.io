@@ -210,7 +210,7 @@ class SoD {
             const listItems = questionContainer.querySelectorAll("li.Selection");
 
             for (const li of listItems) {
-                const score = li.querySelector("input").value;
+                const score = li.querySelector("label.SingleAnswer span").innerText;
                 console.log(score);
             }
         }
