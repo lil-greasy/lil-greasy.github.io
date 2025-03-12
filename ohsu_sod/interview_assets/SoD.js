@@ -218,7 +218,7 @@ class SoD {
                 scoreName.classList.add("score-name");
                 scoreName.innerText = SoD.evalRubric.scores[score];
 
-                label.appendChild("scoreName");
+                label.appendChild(scoreName);
             }
         }
     };
