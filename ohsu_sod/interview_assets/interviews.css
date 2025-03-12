@@ -288,7 +288,7 @@ table.rubric-key {
     }
 }
 
-.QuestionBody ul.ChoiceStructure {
+.qualityRatingQuestion ul.ChoiceStructure {
     display: flex;
     flex-direction: row;
 

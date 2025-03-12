@@ -144,12 +144,13 @@ class SoD {
         }
         domClimber.classList.add(className);
     };
-    static #addClassToQuestionContainer(startingPoint, className) {
+    static #markQuestionContainer(startingPoint, className) {
         let domClimber = startingPoint;
         while (!domClimber.classList.contains("QuestionOuter")) {
             domClimber = domClimber.parentElement;
         }
         domClimber.classList.add(className);
+        return domClimber;
     };
 
     static activateEvalSkipper() {
@@ -205,9 +206,15 @@ class SoD {
 
         for (const insertionMarker of insertionMarkers) {
             const qualityName = insertionMarker.getAttribute("quality");
-            SoD.#addClassToQuestionContainer(insertionMarker, "quality-rating-question");
+            const questionContainer = SoD.#markQuestionContainer(insertionMarker, "quality-rating-question");
+            const listItems = questionContainer.querySelector("li.Selection");
+
+            for (const li of listItems) {
+                const score = li.querySelector("input").value;
+                console.log(score);
+            }
         }
-    }
+    };
 
     static activateNotepadBackup() {
         const textarea = this.#findCousinElement(".notepad-marker", "textarea");
