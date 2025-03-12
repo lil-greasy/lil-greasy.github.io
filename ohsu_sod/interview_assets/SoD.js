@@ -215,6 +215,7 @@ class SoD {
 
             for (const td of rubricKey.querySelectorAll("td")) {
                 td.addEventListener("mouseenter", function() {
+                    console.log("hover!");
                     updateColumnStates(rubricKey, td.getAttribute("score"));
                 });
             }
