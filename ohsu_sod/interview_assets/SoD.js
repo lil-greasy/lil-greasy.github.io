@@ -316,7 +316,7 @@ class SoD {
                 listItem.label.innerText = interview.applicant.fullName;
             }
         }
-        // populateTOC();
+        populateTOC();
 
         function insertInterviewQuestions() {
             const insertionPoints = document.querySelectorAll(".question-content[content-type='questions']");
