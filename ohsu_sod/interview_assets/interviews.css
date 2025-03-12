@@ -177,7 +177,7 @@ header {
                             }
                             & h3.toc-entry.active, h3.toc-entry a {
                                 border: 1px solid var(--marquam);
-                                padding: 0.5em;
+                                padding: 0.25em 0.5em;
                                 border-radius: var(--narrow-round);
                             }
                         }
