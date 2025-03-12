@@ -256,6 +256,7 @@ body.skip-eval #Questions .QuestionOuter:not(.eval-skipper) {
 }
 
 table.rubric-key {
+    border-collapse: collapse;
     font-size: 75%;
     line-height: 1.4;
 
@@ -284,5 +285,11 @@ table.rubric-key {
         & ul {
             padding-left: 1em;
         }
+    }
+    & col {
+        border: 1px solid transparent;
+    }
+    & col:hover {
+        border-color: var(--light-blue);
     }
 }
