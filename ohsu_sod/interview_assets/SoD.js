@@ -360,6 +360,8 @@ class RubricKey {
         const rubricKey = document.createElement("table");
         rubricKey.classList.add("rubric-key");
         rubricKey.setAttribute("quality", qualityName);
+
+        const colgroup = document.createElement("colgroup");
         
         const tHead = document.createElement("thead");
         tHead.tr = document.createElement("tr");
@@ -368,6 +370,10 @@ class RubricKey {
         const tBody = document.createElement("tbody");
         tBody.tr = document.createElement("tr");
         for (const score in SoD.evalRubric.scores) {
+            const col = document.createElement("col");
+            col.setAttribute("score", score);
+            colgroup.appendChild(col);
+
             const headTD = document.createElement("td");
             headTD.classList.add("score-name");
             headTD.setAttribute("score", score);
@@ -398,6 +404,7 @@ class RubricKey {
         }
         tBody.appendChild(tBody.tr);
 
+        rubricKey.appendChild(colgroup);
         rubricKey.appendChild(tHead);
         rubricKey.appendChild(tBody);
         return rubricKey;
