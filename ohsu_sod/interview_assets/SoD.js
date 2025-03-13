@@ -129,7 +129,7 @@ class SoD {
 
     static #markQuestionContainer(startingPoint, className) {
         let domClimber = startingPoint;
-        while (!domClimber.classList.contains("QuestionOuter")) {
+        while (!domClimber.classList.contains("question")) {
             domClimber = domClimber.parentElement;
         }
         domClimber.classList.add(className);
@@ -143,7 +143,7 @@ class SoD {
 
         if (checkbox) {
             function getOtherQuestionInputs() {
-                const otherQuestionContainers = document.querySelectorAll(".QuestionOuter:not(.eval-skipper)");
+                const otherQuestionContainers = document.querySelectorAll(".question:not(.eval-skipper)");
                 let inputs = [];
                 for (const container of otherQuestionContainers) {
                     container.inputs = container.querySelectorAll(":is(input, textarea)");
