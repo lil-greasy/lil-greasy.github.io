@@ -168,12 +168,22 @@ header {
                             & h3.toc-entry {
                                 padding: 0;
                                 padding-inline-start: 0;
+                                font-size: 0.875rem;
                                 & .status {
                                     display: none;
                                 }
                             }
                             & h3.toc-entry.active {
                                 cursor: default;
+                                background-color: var(--marquam);
+                                color: #ffffff;
+                            }
+                            & h3.toc-entry a {
+                                text-decoration: none;
+                            }
+                            & h3.toc-entry a:hover {
+                                background-color: var(--marquam);
+                                color: #ffffff;
                             }
                             & h3.toc-entry.active, h3.toc-entry a {
                                 border: 1px solid var(--marquam);
