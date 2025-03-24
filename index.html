@@ -1,8 +1,325 @@
 <!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<html>
+    <head>
         <title>Rooster Rock</title>
-        
+        <meta charset="utf-8">    <style>
+            @font-face {
+                font-family: "Cooper";
+                src: url("assets/fonts/Cooper-Regular.woff2") format("woff2");
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: "Cooper";
+                src: url("assets/fonts/Cooper-Black.woff2") format("woff2");
+                font-weight: bold;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: "Cooper";
+                src: url("assets/fonts/Cooper-Italic.woff2") format("woff2");
+                font-weight: normal;
+                font-style: italic;
+            }
+            @font-face {
+                font-family: "Cooper";
+                src: url("assets/fonts/Cooper-BlackItalic.woff2") format("woff2");
+                font-weight: bold;
+                font-style: italic;
+            }
+            @font-face {
+                font-family: "Plex Sans";
+                src: url("assets/fonts/IBMPlexSans-Text.woff2") format("woff2");
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: "Plex Sans";
+                src: url("assets/fonts/IBMPlexSans-Italic.woff2") format("woff2");
+                font-weight: normal;
+                font-style: italic;
+            }
+            @font-face {
+                font-family: "Plex Sans";
+                src: url("assets/fonts/IBMPlexSans-Bold.woff2") format("woff2");
+                font-weight: bold;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: "Plex Sans";
+                src: url("assets/fonts/IBMPlexSans-BoldItalic.woff2") format("woff2");
+                font-weight: bold;
+                font-style: italic;
+            }
+    
+            :root {
+                font-size: 32px;
+                --maximum-layout-width: 40rem;
+                --line-width: 0.125rem;
+                --line-width-fine: .0625px;
+                --border-radius: 1rem;
+                --border-radius-tight: 0.25rem;
+                --border-radius-medium: 1rem;
+                --border-radius-wide: 2rem;
+                --drop-shadow-1: drop-shadow(0.25rem 0.3rem 0 rgba(0, 0, 0, 0.5));
+                --drop-shadow-2: drop-shadow(0.375rem 0.45rem 0 rgba(0, 0, 0, 0.3));
+                --bg-main: #fffaf0;
+                --bg-lighter: #ffffff;
+                --bg-reverse: var(--fg-main);
+                --fg-main: rgba(0, 0, 0, 0.9);
+                --fg-reverse-bright: #ffffff;
+                --link: #c00000;
+                --reverse-emph:#ffff00;
+                font-family: "Plex Sans";
+                color: var(--fg-main);
+            }
+    
+            body {
+                background-color: var(--bg-main);
+                margin: 0;
+                padding: 0 0.5rem;
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            body > * {
+                animation: 0.5s fade-in;
+            }
+            p, button {
+                font-size: 1rem;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-family: "Cooper";
+                line-height: 1em;
+            }
+            :is(h1, h2, h3, h4, h5, h6):first-child {
+                margin-top: 0;
+            }
+            .emph {
+                font-weight: bold;
+            }
+            a, a:visited {
+                font-weight: bold;
+                font-style: normal;
+                color: var(--link);
+                margin: 0 -0.25em;
+                padding: 0 0.25em;
+                text-decoration: underline;
+                text-decoration-style: dotted;
+                transition: all 0.25s;
+            }
+            a:hover {
+                background-color: var(--link);
+                color: var(--reverse-emph);
+                border-radius: var(--border-radius-tight);
+            }
+            button {
+                border-radius: var(--border-radius-wide);
+                padding: 0.5em 0.75em;
+                background-color: lch(from var(--bg-main) calc(l * 0.75) calc(c * 2) h);
+                border:0.1rem solid;
+                --highlight: lch(from var(--bg-main) calc(l * 0.9) c h);
+                --shadow: lch(from var(--bg-main) calc(l * 0.65) calc(c * 2) h);
+                border-color: var(--highlight) var(--shadow) var(--shadow) var(--highlight);
+                color: var(--fg-main);
+                font-family: "Plex Sans";
+                font-weight: bold;
+                cursor: pointer;
+            }
+            button:hover {
+                background-color: lch(from var(--bg-main) calc(l * 0.9) calc(c * 2) h);
+            }
+            button:active {
+                border-color: var(--shadow) var(--highlight) var(--highlight) var(--shadow);
+            }
+            header, main {
+                width: 100%;
+                max-width: var(--maximum-layout-width);
+            }
+            p.note {
+                font-style: italic;
+                font-size: 80%;
+            }
+            header::after {
+                content: " ";
+                display: block;
+                height: 1rem;
+                margin: 1rem 0;
+                width: 100%;
+                background-image: url("assets/waterline_separator.svg");
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            div[popover] {
+                position: relative;
+                border: var(--line-width) solid var(--fg-main);
+                background-color: var(--bg-lighter);
+                border-radius: var(--border-radius-tight);
+                filter: var(--drop-shadow-2);
+                padding: 0.5rem;
+                animation: 0.5s fade-in;
+            }
+            div[popover] .content {
+                width: calc(var(--maximum-layout-width) - 2rem);
+                max-width: calc(100vw - 6rem);
+                max-height: calc(100vh - 10rem);
+                overflow: auto;
+                padding: 0 0.5rem;
+            }
+            
+            button.close-button {
+                position: fixed;
+                top: 0.5rem;
+                right: 0.5rem;
+                background-color: var(--link);
+                --highlight: lch(from var(--link) calc(l * 1.5) c h);
+                --shadow: lch(from var(--link) calc(l * 0.35) c h);
+                border-color: var(--highlight) var(--shadow) var(--shadow) var(--highlight);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 0.5rem;
+                border-radius: 2rem;
+            }
+            button.close-button:hover {
+                background-color: lch(from var(--link) calc(l *2.2) c h);
+            }
+            button.close-button:active {
+                border-color: var(--shadow) var(--highlight) var(--highlight) var(--shadow);
+            }
+            button.close-button svg.icon {
+                width: 0.75rem;
+                height: 0.75rem;
+            }
+            button.close-button svg.icon line {
+                stroke: var(--fg-reverse-bright);
+            }
+            .hidden {
+                display: none;
+            }
+            
+            header {
+                margin-top: 1rem;
+                & :is(h1, p) {
+                    text-align: center;
+                }
+                & h1 {
+                    font-size: 3rem;
+                    margin: 0;
+                }
+                & h1::before {
+                    content: "";
+                    z-index: -1;
+                    display: block;
+                    height: 5rem;
+                    margin-bottom: -1.5rem;
+                    background-image: url(./assets/floaty.svg);
+                    background-size: contain;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+                & h1 ~ p.subhead {
+                    margin-top: 0.5rem;
+                }
+            }
+    
+            @keyframes fade-in {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+    
+            @keyframes pulse {
+                from {
+                    opacity: 1;
+                }
+                50% {
+                    opacity: 0.25;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+    
+            .water-level-insertion-point {
+                --difficult: #a00000;
+                --possible: #ffd000;
+                --easier: #00ff00;
+                --difficult-dark: lch(from var(--difficult) calc(l * 0.5) c h);
+                --possible-dark: lch(from var(--possible) calc(l * 0.5) c h);
+                --easier-dark: lch(from var(--easier) calc(l * 0.5) c h);
+                margin-bottom: 1em;
+            }
+            .water-level-insertion-point .placeholder {
+                background-color: rgba(212, 212, 212, 0.15);
+                color: #000000;
+                animation-name: pulse;
+                animation-duration: 1.25s;
+                animation-timing-function: ease;
+                animation-iteration-count: infinite;
+            }
+            .water-level-insertion-point .water-level-measurement {
+                padding: 0.125em 0.25em;
+                margin-right: 0.25em;
+                font-weight: bold;
+                border-radius: var(--border-radius-tight);
+            }
+            .water-level-insertion-point .water-level-measurement.difficult {
+                background-color: var(--difficult);
+                border-color: var(--difficult-dark);
+                color: var(--fg-reverse-bright);
+            }
+            .water-level-insertion-point .water-level-measurement.possible {
+                background-color: var(--possible);
+                border-color: var(--possible-dark);
+                color: #000000;
+            }
+            .water-level-insertion-point .water-level-measurement.easier {
+                background-color: var(--easier);
+                border-color: var(--easier-dark);
+                color: var(--fg-main);
+            }
+            .water-level-insertion-point .water-level-measurement-time {
+                font-size: 80%;
+            }
+
+            main {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+
+            main #water-level-section {
+                min-width: 20rem;
+                max-width: 24rem;
+                flex-grow: 1;
+            }
+            main #announcement-section {
+                flex-grow: 0;
+                max-width: 12rem;
+                border: 0.1rem solid #000000;
+                margin-top: -0.5rem;
+                padding: 0.5rem 1rem;
+                border-radius: var(--border-radius-medium);
+                
+                & h2 {
+                    font-size: 80%;
+                    text-transform: uppercase;
+                    line-height: 1.25em;
+                }
+                & p {
+                    font-size: 80%;
+                }
+            }
+        </style>
     </head>
 
     <body>
@@ -11,38 +328,57 @@
             <p class="subhead">an unofficial website in honor of Oregon’s funnest state park</p>
         </header>
         <main>
-            <div class="separator"></div>
             <div id="water-level-section">
                 <h2>The water level is…</h2>
-                <div class="water-level-insertion-point"><span class="water-level-measurement difficult">15.43 feet</span><span class="water-level-measurement-time"> as of Dec 30, 10:00 AM PST</span></div>
+                <div class="water-level-insertion-point">
+                    <div class="no-script">
+                        <p>
+                            The roosterrock.org water level indicator requires JavaScript to operate.
+                        </p>
+                    </div>
+                    <span class="placeholder">querying...</span>
+                </div>
                 <div id="water-level-explanation">
-                    <button popovertarget="water-level-explanation-content" popovertargetaction="show" type="button">
+                    <button
+                        popovertarget="water-level-explanation-content"
+                        popovertargetaction="show"
+                        type="button">
                         What does this mean?
                     </button>
-                    <div id="water-level-explanation-content" popover=""><div class="content">
+                    <div id="water-level-explanation-content" popover>
                         <h3>About the water level</h3>
                         <p>Many visitors to Rooster Rock like to hang out on what is colloquially known as “the Island”. Because the water level fluctuates, it’s often possible to wade to the Island, sometimes it requires swimming or floating, and sometimes the Island becomes a peninsula.</p>
                         <ul>
                             <li>Rooster Rock is above sea level, so a hypothetical water level of 8 feet doesn’t indicate that the water will be over your head.</li>
                             <li>Because of underwater sand ridges, abrupt drops are common while wading. Please tread carefully.</li>
                         </ul>
-                        </div><button class="close-button" popovertarget="" type="button"><svg version="1.1" id="" class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="14.397px" height="14.397px" viewBox="0 0 14.397 14.397" xml:space="preserve">
-                <line fill="none" stroke-width="2.7687" stroke-linecap="round" stroke-miterlimit="10" x1="1.384" y1="1.384" x2="13.013" y2="13.013"></line>
-                <line fill="none" stroke-width="2.7687" stroke-linecap="round" stroke-miterlimit="10" x1="1.384" y1="13.013" x2="13.013" y2="1.384"></line>
-            </svg></button></div>
+                        </div>
                      </div>
                 <p class="note">
-                    Water level data provided by the <span class="emph">United States Geological Survey</span> (your tax dollars at work). <a href="https://waterdata.usgs.gov/monitoring-location/14128870/#parameterCode=00065&amp;period=P7D">More&nbsp;details</a>
+                    Water level data provided by the <span class="emph">United States Geological Survey</span> (your tax dollars at work). <a href="https://waterdata.usgs.gov/monitoring-location/14128870/#parameterCode=00065&period=P7D">More&nbsp;details</a>
                 </p>
+            </div>
+            <div id="announcement-section">
+                <h2>Procure your perennial parking pass today.</h2>
+                <p>At the beginning of 2025, the single-day parking rate for Oregon State Parks <a href="https://stateparks.oregon.gov/index.cfm?do=v.feature-article&articleId=351">doubled from $5 to $10</a>. Still reasonable! But if you plan to visit Rooster Rock three or more times in 2025, it would behoove you to pick up an annual pass for $30.</p>
+                <p>Get your pass at <a href="https://oregonstateparks.reserveamerica.com/posProducts.do?contractCode=OR&posFilterCat=598053577">Oregon&nbsp;State&nbsp;Parks</a>.</p>
             </div>
         </main>
         <div id="assets" class="hidden">
-            <svg version="1.1" id="close-icon-reusable" class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="14.397px" height="14.397px" viewBox="0 0 14.397 14.397" xml:space="preserve">
-                <line fill="none" stroke-width="2.7687" stroke-linecap="round" stroke-miterlimit="10" x1="1.384" y1="1.384" x2="13.013" y2="13.013"></line>
-                <line fill="none" stroke-width="2.7687" stroke-linecap="round" stroke-miterlimit="10" x1="1.384" y1="13.013" x2="13.013" y2="1.384"></line>
+            <svg
+                version="1.1"
+                id="close-icon-reusable" class="icon"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+                x="0px" y="0px"
+                width="14.397px" height="14.397px"
+                viewBox="0 0 14.397 14.397"
+                xml:space="preserve">
+                <line fill="none" stroke-width="2.7687" stroke-linecap="round" stroke-miterlimit="10" x1="1.384" y1="1.384" x2="13.013" y2="13.013"/>
+                <line fill="none" stroke-width="2.7687" stroke-linecap="round" stroke-miterlimit="10" x1="1.384" y1="13.013" x2="13.013" y2="1.384"/>
             </svg>
         </div>
-    
+    </body>
 
     <script>
         const Magic = {};
@@ -154,271 +490,4 @@
         Magic.enhancePopovers();
     </script>
 
-    <style>
-        @font-face {
-            font-family: "Cooper";
-            src: url("assets/fonts/Cooper-Regular.woff2") format("woff2");
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: "Cooper";
-            src: url("assets/fonts/Cooper-Black.woff2") format("woff2");
-            font-weight: bold;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: "Cooper";
-            src: url("assets/fonts/Cooper-Italic.woff2") format("woff2");
-            font-weight: normal;
-            font-style: italic;
-        }
-        @font-face {
-            font-family: "Cooper";
-            src: url("assets/fonts/Cooper-BlackItalic.woff2") format("woff2");
-            font-weight: bold;
-            font-style: italic;
-        }
-        @font-face {
-            font-family: "Plex Sans";
-            src: url("assets/fonts/IBMPlexSans-Text.woff2") format("woff2");
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: "Plex Sans";
-            src: url("assets/fonts/IBMPlexSans-Italic.woff2") format("woff2");
-            font-weight: normal;
-            font-style: italic;
-        }
-        @font-face {
-            font-family: "Plex Sans";
-            src: url("assets/fonts/IBMPlexSans-Bold.woff2") format("woff2");
-            font-weight: bold;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: "Plex Sans";
-            src: url("assets/fonts/IBMPlexSans-BoldItalic.woff2") format("woff2");
-            font-weight: bold;
-            font-style: italic;
-        }
-
-        :root {
-            font-size: 32px;
-            --maximum-layout-width: 40rem;
-            --line-width: 0.125rem;
-            --line-width-fine: .0625px;
-            --border-radius: 1rem;
-            --border-radius-tight: 0.25rem;
-            --border-radius-wide: 2rem;
-            --drop-shadow-1: drop-shadow(0.25rem 0.3rem 0 rgba(0, 0, 0, 0.5));
-            --drop-shadow-2: drop-shadow(0.375rem 0.45rem 0 rgba(0, 0, 0, 0.3));
-            --bg-main: #fffaf0;
-            --bg-lighter: #ffffff;
-            --bg-reverse: var(--fg-main);
-            --fg-main: rgba(0, 0, 0, 0.9);
-            --fg-reverse-bright: #ffffff;
-            --link: #c00000;
-            --reverse-emph:#ffff00;
-            font-family: "Plex Sans";
-            color: var(--fg-main);
-        }
-
-        body {
-            background-color: var(--bg-main);
-            margin: 0;
-            padding: 0 0.5rem;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        body > * {
-            animation: 0.5s fade-in;
-        }
-        p, button {
-            font-size: 1rem;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: "Cooper";
-            line-height: 1em;
-        }
-        :is(h1, h2, h3, h4, h5, h6):first-child {
-            margin-top: 0;
-        }
-        .emph {
-            font-weight: bold;
-        }
-        a, a:visited {
-            font-weight: bold;
-            font-style: normal;
-            color: var(--link);
-            margin: 0 -0.25em;
-            padding: 0 0.25em;
-            text-decoration: underline;
-            text-decoration-style: dotted;
-        }
-        a:hover {
-            background-color: var(--link);
-            color: var(--reverse-emph);
-        }
-        button {
-            border-radius: var(--border-radius-wide);
-            padding: 0.5em 0.75em;
-            background-color: lch(from var(--bg-main) calc(l * 0.75) calc(c * 2) h);
-            border:0.1rem solid;
-            --highlight: lch(from var(--bg-main) calc(l * 0.9) c h);
-            --shadow: lch(from var(--bg-main) calc(l * 0.65) calc(c * 2) h);
-            border-color: var(--highlight) var(--shadow) var(--shadow) var(--highlight);
-            color: var(--fg-main);
-            font-family: "Plex Sans";
-            font-weight: bold;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: lch(from var(--bg-main) calc(l * 0.9) calc(c * 2) h);
-        }
-        button:active {
-            border-color: var(--shadow) var(--highlight) var(--highlight) var(--shadow);
-        }
-        header, main {
-            width: 100%;
-            max-width: var(--maximum-layout-width);
-        }
-        p.note {
-            font-style: italic;
-            font-size: 80%;
-        }
-        div.separator {
-            height: 1rem;
-            margin: 1rem 0;
-            width: 100%;
-            background-image: url("assets/waterline_separator.svg");
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        div[popover] {
-            position: relative;
-            border: var(--line-width) solid var(--fg-main);
-            background-color: var(--bg-lighter);
-            border-radius: var(--border-radius-tight);
-            filter: var(--drop-shadow-2);
-            padding: 0.5rem;
-            animation: 0.5s fade-in;
-        }
-        div[popover] .content {
-            width: calc(var(--maximum-layout-width) - 2rem);
-            max-width: calc(100vw - 6rem);
-            max-height: calc(100vh - 10rem);
-            overflow: auto;
-            padding: 0 0.5rem;
-        }
-        
-        button.close-button {
-            position: fixed;
-            top: 0.5rem;
-            right: 0.5rem;
-            background-color: var(--link);
-            --highlight: lch(from var(--link) calc(l * 1.5) c h);
-            --shadow: lch(from var(--link) calc(l * 0.35) c h);
-            border-color: var(--highlight) var(--shadow) var(--shadow) var(--highlight);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.5rem;
-            border-radius: 2rem;
-        }
-        button.close-button:hover {
-            background-color: lch(from var(--link) calc(l *2.2) c h);
-        }
-        button.close-button:active {
-            border-color: var(--shadow) var(--highlight) var(--highlight) var(--shadow);
-        }
-        button.close-button svg.icon {
-            width: 0.75rem;
-            height: 0.75rem;
-        }
-        button.close-button svg.icon line {
-            stroke: var(--fg-reverse-bright);
-        }
-        .hidden {
-            display: none;
-        }
-        
-        header :is(h1, p) {
-            text-align: center;
-        }
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-        }
-        header h1 ~ p.subhead {
-            margin-top: 0.5rem;
-        }
-
-        @keyframes fade-in {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        @keyframes pulse {
-            from {
-                opacity: 1;
-            }
-            50% {
-                opacity: 0.25;
-            }
-            to {
-                opacity: 1;
-            }
-        }
-
-        .water-level-insertion-point {
-            --difficult: #a00000;
-            --possible: #ffd000;
-            --easier: #00ff00;
-            --difficult-dark: lch(from var(--difficult) calc(l * 0.5) c h);
-            --possible-dark: lch(from var(--possible) calc(l * 0.5) c h);
-            --easier-dark: lch(from var(--easier) calc(l * 0.5) c h);
-            margin-bottom: 1em;
-        }
-        .water-level-insertion-point .placeholder {
-            background-color: rgba(212, 212, 212, 0.15);
-            color: #000000;
-            animation-name: pulse;
-            animation-duration: 1.25s;
-            animation-timing-function: ease;
-            animation-iteration-count: infinite;
-        }
-        .water-level-insertion-point .water-level-measurement {
-            padding: 0.125em 0.25em;
-            margin-right: 0.25em;
-            font-weight: bold;
-        }
-        .water-level-insertion-point .water-level-measurement.difficult {
-            background-color: var(--difficult);
-            border-color: var(--difficult-dark);
-            color: var(--fg-reverse-bright);
-        }
-        .water-level-insertion-point .water-level-measurement.possible {
-            background-color: var(--possible);
-            border-color: var(--possible-dark);
-            color: #000000;
-        }
-        .water-level-insertion-point .water-level-measurement.easier {
-            background-color: var(--easier);
-            border-color: var(--easier-dark);
-            color: var(--fg-main);
-        }
-        .water-level-insertion-point .water-level-measurement-time {
-            font-size: 80%;
-        }
-    </style>
-
-</body></html>
+</html>
