@@ -520,7 +520,6 @@
         Magic.waterLevelFetcher = {
             config: {
                 apiURL: "https://api.waterdata.usgs.gov/ogcapi/v0/collections/latest-continuous/items?monitoring_location_id=USGS-14128870",
-                apiKey: "9I5FuW72WOwsYa1Fcspaa05R73XEZYkWvcCAu87O",
                 targetClass: "water-level-insertion-point",
                 timeoutInMilliseconds: 7000,
                 unitsString: " feet",
@@ -553,11 +552,7 @@
             },
 
             async fetchData() {
-                const rawData = await fetch(this.config.apiURL, {
-                    headers: {
-                        "x-api-key": this.config.apiKey,
-                    },
-                });
+                const rawData = await fetch(this.config.apiURL);
                 const data = await rawData.json();
                 return {
                     value: data.features[0].properties.value,
